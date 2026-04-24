@@ -106,15 +106,20 @@
   /* Intro */
   .intro {
     margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
   }
 
   .intro p {
     font-size: 0.97rem;
     line-height: 1.8;
     color: var(--soil);
-    max-width: 580px;
-    margin-bottom: 20px;
+    margin: 0;
   }
+
+  .intro-cta { flex-shrink: 0; }
 
   .intro-cta {
     display: inline-block;
