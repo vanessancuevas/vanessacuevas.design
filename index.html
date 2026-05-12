@@ -111,12 +111,10 @@
     text-decoration: none;
     white-space: nowrap;
     flex-shrink: 0;
-    transition: opacity 0.15s, transform 0.1s;
     -webkit-tap-highlight-color: transparent;
   }
 
   .intro-cta:hover { opacity: 0.86; }
-  .intro-cta:active { opacity: 0.7; transform: scale(0.98); }
 
   /* SECTION HEADER */
   .section-header {
@@ -151,11 +149,10 @@
     border-radius: var(--r-card);
     overflow: hidden;
     box-shadow: 0 1px 6px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.06);
-    transition: box-shadow 0.2s;
   }
 
   .package:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.13), 0 0 0 1px rgba(0,0,0,0.06);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.13), 0 0 0 1px rgba(0,0,0,0.06);
   }
 
   .pkg-header {
@@ -774,6 +771,57 @@
 
   .m-print-btn:hover { opacity: 0.86; }
 
+  /* ANIMATIONS */
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .name-block h1       { animation: fadeSlideDown 0.7s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+    .name-block .tagline { animation: fadeSlideDown 0.65s cubic-bezier(0.25,0.46,0.45,0.94) 0.08s both; }
+    .contact-block       { animation: fadeIn 0.6s ease 0.14s both; }
+    .intro-card          { animation: fadeSlideUp 0.8s cubic-bezier(0.25,0.46,0.45,0.94) 0.2s both; }
+
+    .scroll-anim {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.72s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.72s cubic-bezier(0.25,0.46,0.45,0.94);
+      transition-delay: var(--anim-delay, 0ms);
+    }
+    .scroll-anim.visible { opacity: 1; transform: translateY(0); }
+
+    .package {
+      transition: box-shadow 0.25s, transform 0.25s cubic-bezier(0.25,0.46,0.45,0.94),
+                  opacity 0.72s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .package:hover { transform: translateY(-4px); }
+    .package.scroll-anim:hover { transform: translateY(-4px); }
+    .package.scroll-anim.visible:hover { transform: translateY(-4px); }
+
+    .addon { transition: background 0.15s; }
+    .addon:hover { background: rgba(0,0,0,0.025); }
+
+    .intro-cta {
+      transition: opacity 0.15s, transform 0.18s cubic-bezier(0.25,0.46,0.45,0.94),
+                  box-shadow 0.18s;
+    }
+    .intro-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(46,107,62,0.28);
+    }
+    .intro-cta:active { opacity: 0.7; transform: scale(0.97); box-shadow: none; }
+  }
+
   /* RESPONSIVE */
   @media (max-width: 720px) {
     .packages { grid-template-columns: 1fr; }
@@ -818,11 +866,11 @@
   </div>
 
   <!-- Packages -->
-  <div class="section-header">Service Packages</div>
-  <p class="section-note">All projects begin with a free 30-minute discovery call. Every engagement is scoped upfront as a flat fee — no hourly billing, no subscriptions. A 50% deposit is due at project start; the remainder on launch.</p>
+  <div class="section-header scroll-anim">Service Packages</div>
+  <p class="section-note scroll-anim" style="--anim-delay:60ms">All projects begin with a free 30-minute discovery call. Every engagement is scoped upfront as a flat fee — no hourly billing, no subscriptions. A 50% deposit is due at project start; the remainder on launch.</p>
   <div class="packages">
 
-    <div class="package">
+    <div class="package scroll-anim" style="--anim-delay:0ms">
       <div class="pkg-header">
         <div class="pkg-name">Seed</div>
         <div class="pkg-sub">Simple presence, done right</div>
@@ -846,7 +894,7 @@
       </div>
     </div>
 
-    <div class="package featured">
+    <div class="package featured scroll-anim" style="--anim-delay:90ms">
       <div class="pkg-header">
         <span class="featured-badge">Most Popular</span>
         <div class="pkg-name">Grove</div>
@@ -873,7 +921,7 @@
       </div>
     </div>
 
-    <div class="package">
+    <div class="package scroll-anim" style="--anim-delay:180ms">
       <div class="pkg-header">
         <div class="pkg-name">Canopy</div>
         <div class="pkg-sub">Custom build, fully scoped</div>
@@ -900,9 +948,9 @@
 
   <!-- Add-ons -->
   <div class="addons">
-    <div class="section-header">À La Carte Services</div>
-    <p class="section-note">Every engagement is scoped and quoted as a flat project. Come back when you have a need — no subscriptions, no hourly billing.</p>
-    <div class="addon-card">
+    <div class="section-header scroll-anim">À La Carte Services</div>
+    <p class="section-note scroll-anim" style="--anim-delay:60ms">Every engagement is scoped and quoted as a flat project. Come back when you have a need — no subscriptions, no hourly billing.</p>
+    <div class="addon-card scroll-anim" style="--anim-delay:120ms">
       <div class="addon">
         <div class="addon-name">
           New Page or Section
@@ -956,8 +1004,8 @@
 
   <!-- Comparison -->
   <div class="comparison-wrap">
-    <div class="section-header">How This Compares</div>
-    <div class="comparison-card">
+    <div class="section-header scroll-anim">How This Compares</div>
+    <div class="comparison-card scroll-anim" style="--anim-delay:80ms">
       <div class="comparison-header">
         <div class="comparison-title">Why custom over a platform?</div>
         <div class="competitor-select-wrap">
@@ -1083,12 +1131,12 @@
   updateComparison('godaddy');
   </script>
 
-  <div class="cta-block">
+  <div class="cta-block scroll-anim">
     <p class="cta-block__text">your site should work as hard as you do. you should own every pixel of it.</p>
     <a href="mailto:vanessancuevas@gmail.com?subject=Let%27s%20Work%20Together" class="intro-cta">let's grow something ✦</a>
   </div>
 
-  <footer>
+  <footer class="scroll-anim">
     <div class="footer-note">
       <strong>Regulated or sensitive industries:</strong> Payment processor selection for industries subject to legal or compliance complexity requires legal review by your team. <button class="modal-link" onclick="document.getElementById('clauseModal').classList.add('open')">Read the full Regulated Industries Intake Clause → what it covers, what I'm responsible for, and what requires your legal team</button>
     </div>
@@ -1235,6 +1283,19 @@
     win.document.close();
     win.onload = () => { win.focus(); win.print(); };
   }
+  </script>
+
+  <script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+  document.querySelectorAll('.scroll-anim').forEach(el => observer.observe(el));
   </script>
 
 </div>
