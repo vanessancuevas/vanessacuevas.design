@@ -7,6 +7,7 @@
 <style>
   :root {
     --bg:       #ffffff;
+    --tinted:   #f5f5f7;
     --surface:  #ffffff;
     --text:     #000000;
     --text-2:   #636366;
@@ -19,7 +20,7 @@
     --blue:     #007aff;
     --red:      #ff3b30;
     --r-card:   16px;
-    --r-btn:    12px;
+    --r-pill:   980px;
     --r-sm:     8px;
   }
 
@@ -35,112 +36,148 @@
     min-height: 100vh;
   }
 
-  .page {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 52px 24px 88px;
-  }
-
-  /* HEADER */
-  header {
-    margin-bottom: 36px;
+  /* ── NAV ── */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding: 0 40px;
+    height: 52px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
     gap: 16px;
   }
 
-  .name-block h1 {
-    font-size: 2.25rem;
-    font-weight: 700;
+  .nav-name {
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: -0.015em;
     color: var(--text);
-    letter-spacing: -0.025em;
-    line-height: 1.1;
-  }
-
-  .name-block .tagline {
-    font-size: 0.9rem;
-    color: var(--text-2);
-    margin-top: 6px;
-  }
-
-  .contact-block {
-    text-align: right;
-    font-size: 0.85rem;
-    color: var(--text-2);
-    line-height: 1.85;
-  }
-
-  .contact-block a {
-    color: var(--blue);
     text-decoration: none;
+    flex-shrink: 0;
   }
 
-  /* INTRO CARD */
-  .intro-card {
-    background: var(--surface);
-    border-radius: var(--r-card);
-    padding: 24px;
-    margin-bottom: 40px;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.06);
+  .nav-right {
     display: flex;
     align-items: center;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-
-  .intro-card p {
-    font-size: 1rem;
-    line-height: 1.65;
+    gap: 14px;
+    font-size: 0.8rem;
     color: var(--text-2);
-    flex: 1;
-    min-width: 220px;
   }
 
-  .intro-cta {
+  .nav-right a { color: var(--text-2); text-decoration: none; }
+  .nav-sep { opacity: 0.35; }
+
+  .nav-cta {
+    background: var(--green);
+    color: #fff;
+    padding: 7px 16px;
+    border-radius: var(--r-pill);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+  }
+
+  .nav-cta:hover { opacity: 0.84; }
+
+  /* ── HERO ── */
+  .hero {
+    text-align: center;
+    padding: 112px 24px 104px;
+    background: var(--bg);
+  }
+
+  .hero-inner { max-width: 800px; margin: 0 auto; }
+
+  .eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 22px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin-bottom: 24px;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    color: var(--text-2);
+    max-width: 500px;
+    margin: 0 auto 44px;
+    line-height: 1.72;
+  }
+
+  .btn {
     display: inline-block;
     background: var(--green);
     color: #fff;
     font-family: inherit;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 600;
-    letter-spacing: -0.01em;
-    padding: 13px 26px;
-    border-radius: var(--r-btn);
+    padding: 16px 38px;
+    border-radius: var(--r-pill);
     text-decoration: none;
-    white-space: nowrap;
-    flex-shrink: 0;
+    letter-spacing: -0.01em;
+    border: none;
+    cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    transition: opacity 0.15s, transform 0.18s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.18s;
   }
 
-  .intro-cta:hover { opacity: 0.86; }
+  .btn:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,107,62,0.28); }
+  .btn:active { opacity: 0.72; transform: scale(0.97); box-shadow: none; }
 
-  /* SECTION HEADER */
-  .section-header {
-    font-size: 0.78rem;
-    font-weight: 400;
+  .btn--white { background: #ffffff; color: #0d0d0d; }
+  .btn--white:hover { box-shadow: 0 8px 28px rgba(255,255,255,0.22); }
+
+  /* ── SECTIONS ── */
+  .section { padding: 96px 40px; }
+  .section.tinted { background: var(--tinted); }
+
+  .section-inner { max-width: 960px; margin: 0 auto; }
+
+  .section-intro { margin-bottom: 52px; }
+
+  .display {
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-top: 10px;
+    margin-bottom: 14px;
+  }
+
+  .section-body {
+    font-size: 1rem;
     color: var(--text-2);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    padding: 0 4px;
-    margin-bottom: 8px;
+    line-height: 1.72;
+    max-width: 540px;
   }
 
-  .section-note {
-    font-size: 0.85rem;
-    color: var(--text-2);
-    line-height: 1.65;
-    padding: 0 4px;
-    margin-bottom: 10px;
-  }
-
-  /* PACKAGES */
+  /* ── PACKAGES ── */
   .packages {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 36px;
+    gap: 14px;
     align-items: start;
   }
 
@@ -148,86 +185,50 @@
     background: var(--surface);
     border-radius: var(--r-card);
     overflow: hidden;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.09), 0 0 0 1px rgba(0,0,0,0.06);
   }
 
-  .package:hover {
-    box-shadow: 0 8px 28px rgba(0,0,0,0.13), 0 0 0 1px rgba(0,0,0,0.06);
-  }
-
-  .pkg-header {
-    padding: 20px 20px 16px;
-    border-bottom: 1px solid var(--sep);
-  }
-
-  .package.featured .pkg-header {
-    background: var(--green-bg);
-  }
+  .pkg-header { padding: 24px 24px 18px; border-bottom: 1px solid var(--sep); }
+  .package.featured .pkg-header { background: var(--green-bg); }
 
   .featured-badge {
     display: inline-block;
     background: var(--green);
     color: #fff;
-    font-size: 0.65rem;
-    letter-spacing: 0.06em;
+    font-size: 0.63rem;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
-    padding: 3px 9px;
-    border-radius: 100px;
+    padding: 3px 10px;
+    border-radius: var(--r-pill);
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
-  .pkg-name {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: -0.01em;
-  }
+  .pkg-name { font-size: 1.15rem; font-weight: 600; color: var(--text); letter-spacing: -0.015em; }
+  .pkg-sub { font-size: 0.82rem; color: var(--text-2); margin-top: 4px; }
 
-  .pkg-sub {
-    font-size: 0.8rem;
-    color: var(--text-2);
-    margin-top: 3px;
-  }
-
-  .price {
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--sep);
-  }
+  .price { padding: 18px 24px; border-bottom: 1px solid var(--sep); }
 
   .price .amount {
-    font-size: 1.8rem;
+    font-size: 2.1rem;
     font-weight: 700;
     color: var(--text);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     line-height: 1;
     display: block;
   }
 
-  .price .cadence {
-    font-size: 0.76rem;
-    color: var(--text-3);
-    margin-top: 4px;
-    display: block;
-  }
+  .price .cadence { font-size: 0.76rem; color: var(--text-3); margin-top: 5px; display: block; }
 
-  .pkg-body {
-    padding: 16px 20px 20px;
-  }
-
-  .package-desc {
-    font-size: 0.85rem;
-    color: var(--text-2);
-    line-height: 1.6;
-    margin-bottom: 14px;
-  }
+  .pkg-body { padding: 18px 24px 24px; }
+  .package-desc { font-size: 0.86rem; color: var(--text-2); line-height: 1.65; margin-bottom: 16px; }
 
   .feature-list { list-style: none; }
 
   .feature-list li {
     font-size: 0.84rem;
     color: var(--text);
-    padding: 7px 0 7px 20px;
+    padding: 8px 0 8px 20px;
     position: relative;
     border-bottom: 1px solid var(--sep);
   }
@@ -241,53 +242,43 @@
     color: var(--green);
     font-size: 0.78rem;
     font-weight: 700;
-    top: 8px;
+    top: 9px;
   }
 
-  /* ADD-ONS */
-  .addons { margin-bottom: 36px; }
-
+  /* ── ADD-ONS ── */
   .addon-card {
     background: var(--surface);
     border-radius: var(--r-card);
     overflow: hidden;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.05);
   }
 
   .addon {
-    padding: 14px 20px;
+    padding: 16px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
     border-bottom: 1px solid var(--sep);
+    transition: background 0.15s;
   }
 
   .addon:last-child { border-bottom: none; }
+  .addon:hover { background: rgba(0,0,0,0.02); }
 
-  .addon-name {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.3;
-  }
+  .addon-name { font-size: 0.92rem; font-weight: 500; color: var(--text); line-height: 1.3; }
 
   .addon-name .note {
     display: block;
-    font-size: 0.78rem;
+    font-size: 0.79rem;
     font-weight: 400;
     color: var(--text-2);
-    margin-top: 2px;
+    margin-top: 3px;
   }
 
-  .addon-price {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text);
-    white-space: nowrap;
-  }
+  .addon-price { font-size: 0.92rem; font-weight: 600; color: var(--text); white-space: nowrap; }
 
-  /* TOOLTIP */
+  /* ── TOOLTIP ── */
   .tooltip-wrap {
     position: relative;
     display: inline-flex;
@@ -344,47 +335,29 @@
 
   .tooltip-wrap:hover .tooltip-box { display: block; }
 
-  /* COMPARISON */
-  .comparison-wrap { margin-bottom: 36px; }
-
+  /* ── COMPARISON ── */
   .comparison-card {
     background: var(--surface);
     border-radius: var(--r-card);
-    padding: 24px;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.06);
+    padding: 28px 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.05);
   }
 
   .comparison-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
     gap: 12px;
   }
 
-  .comparison-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: -0.01em;
-  }
+  .comparison-title { font-size: 1rem; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
 
-  .competitor-select-wrap {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.82rem;
-    color: var(--text-2);
-  }
-
+  .competitor-select-wrap { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-2); }
   .competitor-select-wrap label { white-space: nowrap; }
 
-  .select-shell {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-  }
+  .select-shell { position: relative; display: inline-flex; align-items: center; }
 
   .select-shell select {
     appearance: none;
@@ -400,18 +373,8 @@
     outline: none;
   }
 
-  .select-shell select:focus {
-    outline: 2px solid var(--blue);
-    outline-offset: 1px;
-  }
-
-  .select-shell .select-arrow {
-    position: absolute;
-    right: 9px;
-    font-size: 0.55rem;
-    color: var(--text-3);
-    pointer-events: none;
-  }
+  .select-shell select:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
+  .select-shell .select-arrow { position: absolute; right: 9px; font-size: 0.55rem; color: var(--text-3); pointer-events: none; }
 
   #compareBody tr { animation: rowIn 0.18s ease both; }
 
@@ -420,15 +383,11 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .compare-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.85rem;
-  }
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
 
   .compare-table th {
     text-align: left;
-    padding: 6px 8px 10px 0;
+    padding: 6px 8px 12px 0;
     font-size: 0.7rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -440,7 +399,7 @@
   .compare-table th:not(:first-child) { text-align: center; }
 
   .compare-table td {
-    padding: 10px 8px 10px 0;
+    padding: 11px 8px 11px 0;
     border-bottom: 1px solid var(--sep);
     color: var(--text);
     vertical-align: middle;
@@ -453,67 +412,60 @@
   .cross   { color: var(--red); }
   .partial { color: var(--text-2); font-style: italic; font-size: 0.82rem; }
 
-  #compareNote {
-    font-size: 0.8rem;
-    color: var(--text-2);
-    line-height: 1.65;
-    padding-top: 14px;
-    border-top: 1px solid var(--sep);
-    margin-top: 4px;
-  }
+  #compareNote { font-size: 0.81rem; color: var(--text-2); line-height: 1.65; padding-top: 16px; border-top: 1px solid var(--sep); margin-top: 4px; }
 
-  /* CTA BLOCK */
-  .cta-block {
-    background: var(--surface);
-    border-radius: var(--r-card);
-    padding: 40px 32px;
-    margin-bottom: 48px;
+  /* ── CLOSING ── */
+  .closing {
+    background: #0d0d0d;
     text-align: center;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.06);
+    padding: 112px 24px;
   }
 
-  .cta-block__text {
-    font-size: 1.05rem;
-    font-weight: 400;
-    color: var(--text);
+  .closing-inner { max-width: 620px; margin: 0 auto; }
+
+  .closing-headline {
+    font-size: clamp(2.1rem, 4.5vw, 3.4rem);
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.04em;
+    line-height: 1.08;
+    margin-bottom: 16px;
+  }
+
+  .closing-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 44px;
     line-height: 1.65;
-    max-width: 420px;
-    margin: 0 auto 24px;
   }
 
-  /* FOOTER */
-  footer {
-    padding-top: 24px;
-    border-top: 1px solid var(--sep);
+  /* ── FOOTER ── */
+  .site-footer {
+    padding: 28px 40px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .footer-inner {
+    max-width: 960px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     flex-wrap: wrap;
     gap: 16px;
   }
 
-  .footer-note {
-    font-size: 0.82rem;
-    color: var(--text-2);
-    line-height: 1.75;
-    max-width: 520px;
-  }
-
+  .footer-note { font-size: 0.8rem; color: var(--text-2); line-height: 1.75; max-width: 520px; }
   .footer-note strong { color: var(--text); font-weight: 500; }
+  .footer-mark { font-size: 0.8rem; color: var(--text-3); font-style: italic; }
 
-  .footer-mark {
-    font-size: 0.82rem;
-    color: var(--text-3);
-    font-style: italic;
-  }
-
-  /* MODAL LINK */
+  /* ── MODAL LINK ── */
   .modal-link {
     background: none;
     border: none;
     padding: 0;
     font-family: inherit;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 400;
     color: var(--blue);
     cursor: pointer;
@@ -526,7 +478,7 @@
 
   .modal-link:hover { opacity: 0.7; }
 
-  /* MODAL */
+  /* ── MODAL ── */
   .modal-overlay {
     display: none;
     position: fixed;
@@ -550,37 +502,19 @@
     overflow-y: auto;
     position: relative;
     box-shadow: 0 -4px 40px rgba(0,0,0,0.14);
-    animation: sheetIn 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+    animation: sheetIn 0.32s cubic-bezier(0.32,0.72,0,1);
   }
 
   @media (min-width: 600px) {
     .modal-overlay { align-items: center; padding: 24px; }
-    .modal-panel {
-      border-radius: 20px;
-      animation: modalIn 0.22s ease;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
-    }
+    .modal-panel { border-radius: 20px; animation: modalIn 0.22s ease; box-shadow: 0 20px 60px rgba(0,0,0,0.18); }
     .modal-handle { display: none; }
   }
 
-  @keyframes sheetIn {
-    from { transform: translateY(100%); }
-    to   { transform: translateY(0); }
-  }
+  @keyframes sheetIn { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  @keyframes modalIn { from { opacity: 0; transform: translateY(8px) scale(0.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
-  @keyframes modalIn {
-    from { opacity: 0; transform: translateY(8px) scale(0.99); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
-  }
-
-  .modal-handle {
-    display: block;
-    width: 36px;
-    height: 5px;
-    background: var(--sep-op);
-    border-radius: 100px;
-    margin: 10px auto 4px;
-  }
+  .modal-handle { display: block; width: 36px; height: 5px; background: var(--sep-op); border-radius: 100px; margin: 10px auto 4px; }
 
   .modal-close {
     position: sticky;
@@ -608,177 +542,62 @@
 
   .modal-body { padding: 4px 28px 48px; }
 
-  .modal-header {
-    margin-bottom: 28px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--sep);
-  }
+  .modal-header { margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid var(--sep); }
 
-  .modal-name {
-    font-size: 0.72rem;
-    font-weight: 500;
-    color: var(--text-3);
-    margin-bottom: 8px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
+  .modal-name { font-size: 0.72rem; font-weight: 500; color: var(--text-3); margin-bottom: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
 
-  .modal-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    margin-bottom: 6px;
-  }
+  .modal-title { font-size: 1.5rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 6px; }
 
-  .modal-subtitle {
-    font-size: 0.82rem;
-    color: var(--text-2);
-    margin: 12px 0 0;
-  }
+  .modal-subtitle { font-size: 0.82rem; color: var(--text-2); margin: 12px 0 0; }
 
   .m-section { margin-bottom: 24px; }
 
-  .m-label {
-    display: block;
-    font-size: 0.72rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--text-2);
-    font-weight: 400;
-    margin-bottom: 8px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--sep);
-  }
+  .m-label { display: block; font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-2); font-weight: 400; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--sep); }
 
-  .m-section p {
-    font-size: 0.88rem;
-    line-height: 1.75;
-    color: var(--text);
-    margin-bottom: 10px;
-  }
-
+  .m-section p { font-size: 0.88rem; line-height: 1.75; color: var(--text); margin-bottom: 10px; }
   .m-section p:last-child { margin-bottom: 0; }
 
-  .m-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin: 12px 0;
-  }
+  .m-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
 
-  .m-tag {
-    background: var(--fill);
-    border-radius: 100px;
-    padding: 4px 12px;
-    font-size: 0.75rem;
-    color: var(--text);
-    font-weight: 500;
-  }
+  .m-tag { background: var(--fill); border-radius: 100px; padding: 4px 12px; font-size: 0.75rem; color: var(--text); font-weight: 500; }
 
-  .m-clause-box {
-    background: var(--fill);
-    border-radius: var(--r-sm);
-    padding: 14px 18px;
-    margin: 12px 0;
-  }
+  .m-clause-box { background: var(--fill); border-radius: var(--r-sm); padding: 14px 18px; margin: 12px 0; }
 
-  .m-clause-title {
-    display: block;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-3);
-    font-weight: 500;
-    margin-bottom: 8px;
-  }
+  .m-clause-title { display: block; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); font-weight: 500; margin-bottom: 8px; }
 
   .m-clause-box p { font-size: 0.86rem; line-height: 1.8; color: var(--text); margin: 0; }
 
-  .m-note-box {
-    background: rgba(255, 204, 0, 0.1);
-    border-radius: var(--r-sm);
-    padding: 14px 18px;
-    margin-top: 14px;
-  }
-
+  .m-note-box { background: rgba(255,204,0,0.1); border-radius: var(--r-sm); padding: 14px 18px; margin-top: 14px; }
   .m-note-box p { font-size: 0.83rem; color: var(--text); margin: 0; line-height: 1.7; }
   .m-note-box strong { font-weight: 600; }
 
-  .m-sig-block {
-    margin-top: 28px;
-    padding-top: 20px;
-    border-top: 1px solid var(--sep);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
+  .m-sig-block { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--sep); display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-  .m-sig-field label {
-    display: block;
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-3);
-    font-weight: 500;
-    margin-bottom: 8px;
-  }
+  .m-sig-field label { display: block; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); font-weight: 500; margin-bottom: 8px; }
 
   .m-sig-line { border-bottom: 1px solid var(--sep-op); height: 28px; margin-bottom: 4px; }
   .m-hint { font-size: 0.7rem; color: var(--text-2); }
 
-  .m-footer {
-    margin-top: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
+  .m-footer { margin-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
   .m-footer-name { font-size: 0.9rem; font-weight: 600; color: var(--text-2); letter-spacing: -0.01em; }
   .m-footer-url { font-size: 0.75rem; color: var(--text-3); }
 
-  .m-print-actions {
-    margin-top: 20px;
-    padding-top: 16px;
-    border-top: 1px solid var(--sep);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
+  .m-print-actions { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--sep); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
   .m-print-note { font-size: 0.8rem; color: var(--text-2); line-height: 1.6; margin: 0; }
   .m-print-note a { color: var(--blue); text-decoration: none; }
 
-  .m-print-btn {
-    background: var(--green);
-    color: #fff;
-    border: none;
-    border-radius: var(--r-btn);
-    padding: 10px 20px;
-    font-family: inherit;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: opacity 0.15s;
-    -webkit-tap-highlight-color: transparent;
-  }
-
+  .m-print-btn { background: var(--green); color: #fff; border: none; border-radius: 10px; padding: 10px 20px; font-family: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: opacity 0.15s; -webkit-tap-highlight-color: transparent; }
   .m-print-btn:hover { opacity: 0.86; }
 
-  /* ANIMATIONS */
+  /* ── ANIMATIONS ── */
   @media (prefers-reduced-motion: no-preference) {
     @keyframes fadeSlideDown {
-      from { opacity: 0; transform: translateY(-18px); }
+      from { opacity: 0; transform: translateY(-16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes fadeSlideUp {
-      from { opacity: 0; transform: translateY(22px); }
+      from { opacity: 0; transform: translateY(28px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes fadeIn {
@@ -786,59 +605,47 @@
       to   { opacity: 1; }
     }
 
-    .name-block h1       { animation: fadeSlideDown 0.7s cubic-bezier(0.25,0.46,0.45,0.94) both; }
-    .name-block .tagline { animation: fadeSlideDown 0.65s cubic-bezier(0.25,0.46,0.45,0.94) 0.08s both; }
-    .contact-block       { animation: fadeIn 0.6s ease 0.14s both; }
-    .intro-card          { animation: fadeSlideUp 0.8s cubic-bezier(0.25,0.46,0.45,0.94) 0.2s both; }
+    .top-nav   { animation: fadeIn 0.4s ease both; }
+    .hero-inner { animation: fadeSlideUp 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 0.1s both; }
 
     .scroll-anim {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.72s cubic-bezier(0.25,0.46,0.45,0.94),
-                  transform 0.72s cubic-bezier(0.25,0.46,0.45,0.94);
+      transform: translateY(30px);
+      transition: opacity 0.76s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.76s cubic-bezier(0.25,0.46,0.45,0.94);
       transition-delay: var(--anim-delay, 0ms);
     }
     .scroll-anim.visible { opacity: 1; transform: translateY(0); }
 
     .package {
-      transition: box-shadow 0.25s, transform 0.25s cubic-bezier(0.25,0.46,0.45,0.94),
-                  opacity 0.72s cubic-bezier(0.25,0.46,0.45,0.94);
+      transition: box-shadow 0.25s, transform 0.25s cubic-bezier(0.25,0.46,0.45,0.94);
     }
-    .package:hover { transform: translateY(-4px); }
-    .package.scroll-anim:hover { transform: translateY(-4px); }
-    .package.scroll-anim.visible:hover { transform: translateY(-4px); }
-
-    .addon { transition: background 0.15s; }
-    .addon:hover { background: rgba(0,0,0,0.025); }
-
-    .intro-cta {
-      transition: opacity 0.15s, transform 0.18s cubic-bezier(0.25,0.46,0.45,0.94),
-                  box-shadow 0.18s;
-    }
-    .intro-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(46,107,62,0.28);
-    }
-    .intro-cta:active { opacity: 0.7; transform: scale(0.97); box-shadow: none; }
+    .package:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(0,0,0,0.13), 0 0 0 1px rgba(0,0,0,0.06); }
   }
 
-  /* RESPONSIVE */
-  @media (max-width: 720px) {
+  /* ── RESPONSIVE ── */
+  @media (max-width: 760px) {
     .packages { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 600px) {
-    .page { padding: 32px 16px 64px; }
-    header { flex-direction: column; }
-    .contact-block { text-align: left; }
-    .intro-card { flex-direction: column; }
-    .comparison-header { flex-direction: column; align-items: flex-start; }
+    .top-nav { padding: 0 20px; }
+    .nav-right .nav-link, .nav-right .nav-sep, .nav-right .nav-loc { display: none; }
+    .hero { padding: 80px 20px 72px; }
+    .section { padding: 72px 20px; }
+    .comparison-card { padding: 20px; }
     .modal-body { padding: 4px 20px 40px; }
+    .closing { padding: 80px 20px; }
+    .site-footer { padding: 24px 20px; }
   }
 
   @media (max-width: 520px) {
     .m-sig-block { grid-template-columns: 1fr; }
     .m-print-actions { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 480px) {
+    .comparison-header { flex-direction: column; align-items: flex-start; }
   }
 
   @media print {
@@ -847,122 +654,131 @@
 </style>
 </head>
 <body>
-<div class="page">
 
-  <header>
-    <div class="name-block">
-      <h1>Vanessa Cuevas</h1>
-      <p class="tagline">Web Design &amp; Digital Presence</p>
-    </div>
-    <div class="contact-block">
-      <a href="https://vanessacuevas.design">vanessacuevas.design</a><br>
-      Bay Area, CA
-    </div>
-  </header>
-
-  <div class="intro-card">
-    <p>I design and build custom websites for small businesses and independent practitioners — sites that are fast, findable on Google, and actually feel like you. No templates, no lock-in, no platform you can't leave.</p>
-    <a href="mailto:vanessancuevas@gmail.com?subject=Let%27s%20Work%20Together" class="intro-cta">let's grow something ✦</a>
+<!-- NAV -->
+<nav class="top-nav">
+  <span class="nav-name">Vanessa Cuevas</span>
+  <div class="nav-right">
+    <a class="nav-link" href="https://vanessacuevas.design">vanessacuevas.design</a>
+    <span class="nav-sep">·</span>
+    <span class="nav-loc">Bay Area, CA</span>
+    <a class="nav-cta" href="mailto:vanessancuevas@gmail.com?subject=Let%27s%20Work%20Together">Get in touch</a>
   </div>
+</nav>
 
-  <!-- Packages -->
-  <div class="section-header scroll-anim">Service Packages</div>
-  <p class="section-note scroll-anim" style="--anim-delay:60ms">All projects begin with a free 30-minute discovery call. Every engagement is scoped upfront as a flat fee — no hourly billing, no subscriptions. A 50% deposit is due at project start; the remainder on launch.</p>
-  <div class="packages">
-
-    <div class="package scroll-anim" style="--anim-delay:0ms">
-      <div class="pkg-header">
-        <div class="pkg-name">Seed</div>
-        <div class="pkg-sub">Simple presence, done right</div>
-      </div>
-      <div class="price">
-        <span class="amount">$600–$900</span>
-        <span class="cadence">one-time project fee</span>
-      </div>
-      <div class="pkg-body">
-        <p class="package-desc">For service providers who need a clean, credible home on the web. Up to 4 pages, built to be found.</p>
-        <ul class="feature-list">
-          <li>Up to 4 pages</li>
-          <li>Mobile-responsive design</li>
-          <li>Custom domain setup</li>
-          <li>Basic on-page SEO</li>
-          <li>Google Search Console setup</li>
-          <li>Contact form</li>
-          <li>SSL + hosting guidance</li>
-          <li>2 rounds of revisions</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="package featured scroll-anim" style="--anim-delay:90ms">
-      <div class="pkg-header">
-        <span class="featured-badge">Most Popular</span>
-        <div class="pkg-name">Grove</div>
-        <div class="pkg-sub">Full presence with real SEO</div>
-      </div>
-      <div class="price">
-        <span class="amount">$1,200–$1,800</span>
-        <span class="cadence">one-time project fee</span>
-      </div>
-      <div class="pkg-body">
-        <p class="package-desc">For established businesses ready to be discovered. Includes thorough SEO groundwork so your site actually shows up when people search for you.</p>
-        <ul class="feature-list">
-          <li>Up to 8 pages</li>
-          <li>Custom visual design</li>
-          <li>Full on-page SEO strategy</li>
-          <li>Google Business Profile setup</li>
-          <li>Google Search Console + Analytics</li>
-          <li>Blog or news section</li>
-          <li>Booking or inquiry flow</li>
-          <li>3 rounds of revisions</li>
-          <li>30-day post-launch support</li>
-          <li>You own everything</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="package scroll-anim" style="--anim-delay:180ms">
-      <div class="pkg-header">
-        <div class="pkg-name">Canopy</div>
-        <div class="pkg-sub">Custom build, fully scoped</div>
-      </div>
-      <div class="price">
-        <span class="amount">$2,200+</span>
-        <span class="cadence">scoped per project</span>
-      </div>
-      <div class="pkg-body">
-        <p class="package-desc">For businesses that need something more: ecommerce, a booking system, integrations, or a site that will grow with them over time.</p>
-        <ul class="feature-list">
-          <li>Unlimited pages</li>
-          <li>Ecommerce or scheduling</li>
-          <li>Custom functionality</li>
-          <li>Advanced SEO + content plan</li>
-          <li>Email marketing integration</li>
-          <li>Performance optimization</li>
-          <li>Full code ownership</li>
-        </ul>
-      </div>
-    </div>
-
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Web Design &amp; Digital Presence</span>
+    <h1 class="hero-headline">Custom web design for<br>the businesses worth noticing.</h1>
+    <p class="hero-sub">No templates, no lock-in, no platform you can't leave — just a site that's fast, findable, and actually feels like you.</p>
+    <a href="mailto:vanessancuevas@gmail.com?subject=Let%27s%20Work%20Together" class="btn">Let's grow something ✦</a>
   </div>
+</section>
 
-  <!-- Add-ons -->
-  <div class="addons">
-    <div class="section-header scroll-anim">À La Carte Services</div>
-    <p class="section-note scroll-anim" style="--anim-delay:60ms">Every engagement is scoped and quoted as a flat project. Come back when you have a need — no subscriptions, no hourly billing.</p>
-    <div class="addon-card scroll-anim" style="--anim-delay:120ms">
-      <div class="addon">
-        <div class="addon-name">
-          New Page or Section
-          <span class="note">Designed and built to match your existing site</span>
+<!-- PACKAGES -->
+<section class="section tinted">
+  <div class="section-inner">
+    <div class="section-intro scroll-anim">
+      <span class="eyebrow">Pricing</span>
+      <h2 class="display">Find your fit.</h2>
+      <p class="section-body">All projects begin with a free 30-minute discovery call. Every engagement is scoped upfront as a flat fee — no hourly billing, no subscriptions. A 50% deposit is due at project start; the remainder on launch.</p>
+    </div>
+    <div class="packages">
+
+      <div class="package scroll-anim" style="--anim-delay:0ms">
+        <div class="pkg-header">
+          <div class="pkg-name">Seed</div>
+          <div class="pkg-sub">Simple presence, done right</div>
         </div>
+        <div class="price">
+          <span class="amount">$600–$900</span>
+          <span class="cadence">one-time project fee</span>
+        </div>
+        <div class="pkg-body">
+          <p class="package-desc">For service providers who need a clean, credible home on the web. Up to 4 pages, built to be found.</p>
+          <ul class="feature-list">
+            <li>Up to 4 pages</li>
+            <li>Mobile-responsive design</li>
+            <li>Custom domain setup</li>
+            <li>Basic on-page SEO</li>
+            <li>Google Search Console setup</li>
+            <li>Contact form</li>
+            <li>SSL + hosting guidance</li>
+            <li>2 rounds of revisions</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="package featured scroll-anim" style="--anim-delay:90ms">
+        <div class="pkg-header">
+          <span class="featured-badge">Most Popular</span>
+          <div class="pkg-name">Grove</div>
+          <div class="pkg-sub">Full presence with real SEO</div>
+        </div>
+        <div class="price">
+          <span class="amount">$1,200–$1,800</span>
+          <span class="cadence">one-time project fee</span>
+        </div>
+        <div class="pkg-body">
+          <p class="package-desc">For established businesses ready to be discovered. Includes thorough SEO groundwork so your site actually shows up when people search for you.</p>
+          <ul class="feature-list">
+            <li>Up to 8 pages</li>
+            <li>Custom visual design</li>
+            <li>Full on-page SEO strategy</li>
+            <li>Google Business Profile setup</li>
+            <li>Google Search Console + Analytics</li>
+            <li>Blog or news section</li>
+            <li>Booking or inquiry flow</li>
+            <li>3 rounds of revisions</li>
+            <li>30-day post-launch support</li>
+            <li>You own everything</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="package scroll-anim" style="--anim-delay:180ms">
+        <div class="pkg-header">
+          <div class="pkg-name">Canopy</div>
+          <div class="pkg-sub">Custom build, fully scoped</div>
+        </div>
+        <div class="price">
+          <span class="amount">$2,200+</span>
+          <span class="cadence">scoped per project</span>
+        </div>
+        <div class="pkg-body">
+          <p class="package-desc">For businesses that need something more: ecommerce, a booking system, integrations, or a site that will grow with them over time.</p>
+          <ul class="feature-list">
+            <li>Unlimited pages</li>
+            <li>Ecommerce or scheduling</li>
+            <li>Custom functionality</li>
+            <li>Advanced SEO + content plan</li>
+            <li>Email marketing integration</li>
+            <li>Performance optimization</li>
+            <li>Full code ownership</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ADD-ONS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-intro scroll-anim">
+      <span class="eyebrow">À La Carte</span>
+      <h2 class="display">Need something specific?</h2>
+      <p class="section-body">Every engagement is scoped and quoted as a flat project. Come back when you have a need — no subscriptions, no hourly billing.</p>
+    </div>
+    <div class="addon-card scroll-anim" style="--anim-delay:80ms">
+      <div class="addon">
+        <div class="addon-name">New Page or Section<span class="note">Designed and built to match your existing site</span></div>
         <div class="addon-price">from $150</div>
       </div>
       <div class="addon">
-        <div class="addon-name">
-          Copywriting Support
-          <span class="note">Homepage + About page, brand voice editing</span>
-        </div>
+        <div class="addon-name">Copywriting Support<span class="note">Homepage + About page, brand voice editing</span></div>
         <div class="addon-price">$200</div>
       </div>
       <div class="addon">
@@ -970,44 +786,38 @@
           SEO Audit + Report
           <span class="tooltip-wrap">
             <span class="tooltip-icon">?</span>
-            <span class="tooltip-box">
-              <strong>Search Engine Optimization</strong> — the practice of making your site show up when people search for what you offer on Google and other search engines. Without it, your site can exist online but be essentially invisible. An SEO audit uncovers exactly why that's happening and what to fix.
-            </span>
+            <span class="tooltip-box"><strong>Search Engine Optimization</strong> — the practice of making your site show up when people search for what you offer on Google and other search engines. Without it, your site can exist online but be essentially invisible. An SEO audit uncovers exactly why that's happening and what to fix.</span>
           </span>
           <span class="note">Full analysis of why your site isn't showing up</span>
         </div>
         <div class="addon-price">$500</div>
       </div>
       <div class="addon">
-        <div class="addon-name">
-          Seasonal Refresh
-          <span class="note">Updated visuals, promos, or content refresh</span>
-        </div>
+        <div class="addon-name">Seasonal Refresh<span class="note">Updated visuals, promos, or content refresh</span></div>
         <div class="addon-price">$500</div>
       </div>
       <div class="addon">
-        <div class="addon-name">
-          Site Migration
-          <span class="note">Moving off a template builder to a site you own</span>
-        </div>
+        <div class="addon-name">Site Migration<span class="note">Moving off a template builder to a site you own</span></div>
         <div class="addon-price">$700</div>
       </div>
       <div class="addon">
-        <div class="addon-name">
-          Ecommerce Setup
-          <span class="note">Products, payments, checkout — ready to sell</span>
-        </div>
+        <div class="addon-name">Ecommerce Setup<span class="note">Products, payments, checkout — ready to sell</span></div>
         <div class="addon-price">$1,000</div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- Comparison -->
-  <div class="comparison-wrap">
-    <div class="section-header scroll-anim">How This Compares</div>
+<!-- COMPARISON -->
+<section class="section tinted">
+  <div class="section-inner">
+    <div class="section-intro scroll-anim">
+      <span class="eyebrow">Comparison</span>
+      <h2 class="display">Why custom beats a platform.</h2>
+    </div>
     <div class="comparison-card scroll-anim" style="--anim-delay:80ms">
       <div class="comparison-header">
-        <div class="comparison-title">Why custom over a platform?</div>
+        <div class="comparison-title">See how it stacks up</div>
         <div class="competitor-select-wrap">
           <label for="competitorSelect">Compare against</label>
           <div class="select-shell">
@@ -1022,7 +832,6 @@
           </div>
         </div>
       </div>
-
       <table class="compare-table" id="compareTable">
         <thead>
           <tr>
@@ -1036,268 +845,276 @@
       <p id="compareNote"></p>
     </div>
   </div>
+</section>
 
-  <script>
-  const competitors = {
-    godaddy: {
-      label: "GoDaddy",
-      note: "GoDaddy's done-for-you design service starts around $499, but the site is template-driven and locked to their platform — you can't move it. Monthly builder plans run $10–$27/mo with basic SEO tools, no custom code access, and ecommerce only on the highest tier.",
-      rows: [
-        { feature: "Custom visual design (not a template)",          them: "cross",   note_them: "" },
-        { feature: "You own the site and can move it anytime",       them: "cross",   note_them: "" },
-        { feature: "Real SEO structure (properly indexed)",          them: "partial", note_them: "limited" },
-        { feature: "Ecommerce — products, payments, checkout",       them: "partial", note_them: "top tier only" },
-        { feature: "Transparent, flat pricing",                      them: "cross",   note_them: "" },
-        { feature: "Direct human contact throughout",                them: "cross",   note_them: "" },
-        { feature: "One-time fee, no forced subscription",           them: "cross",   note_them: "" },
-      ]
-    },
-    squarespace: {
-      label: "Squarespace",
-      note: "Squarespace has polished templates and decent ecommerce, but you're locked into monthly fees of $16–$49/mo indefinitely, SEO is limited compared to custom builds, and your site cannot be moved off their platform.",
-      rows: [
-        { feature: "Custom visual design (not a template)",          them: "partial", note_them: "template only" },
-        { feature: "You own the site and can move it anytime",       them: "cross",   note_them: "" },
-        { feature: "Real SEO structure (properly indexed)",          them: "partial", note_them: "basic" },
-        { feature: "Ecommerce — products, payments, checkout",       them: "partial", note_them: "higher plans only" },
-        { feature: "Transparent, flat pricing",                      them: "partial", note_them: "monthly fees" },
-        { feature: "Direct human contact throughout",                them: "cross",   note_them: "" },
-        { feature: "One-time fee, no forced subscription",           them: "cross",   note_them: "" },
-      ]
-    },
-    wix: {
-      label: "Wix",
-      note: "Wix is flexible and beginner-friendly with plans from $17–$35/mo, but sites are known to underperform on SEO, ecommerce requires a paid upgrade, and migrating your content off Wix once built is very difficult.",
-      rows: [
-        { feature: "Custom visual design (not a template)",          them: "partial", note_them: "template only" },
-        { feature: "You own the site and can move it anytime",       them: "cross",   note_them: "" },
-        { feature: "Real SEO structure (properly indexed)",          them: "partial", note_them: "inconsistent" },
-        { feature: "Ecommerce — products, payments, checkout",       them: "partial", note_them: "paid upgrade" },
-        { feature: "Transparent, flat pricing",                      them: "partial", note_them: "monthly fees" },
-        { feature: "Direct human contact throughout",                them: "cross",   note_them: "" },
-        { feature: "One-time fee, no forced subscription",           them: "cross",   note_them: "" },
-      ]
-    },
-    weebly: {
-      label: "Weebly / Square Online",
-      note: "Square Online works well if you're already using Square for payments, but design flexibility is very limited, SEO is basic, ecommerce is tied tightly to Square's ecosystem, and the platform has seen little meaningful development in recent years.",
-      rows: [
-        { feature: "Custom visual design (not a template)",          them: "cross",   note_them: "" },
-        { feature: "You own the site and can move it anytime",       them: "cross",   note_them: "" },
-        { feature: "Real SEO structure (properly indexed)",          them: "partial", note_them: "basic" },
-        { feature: "Ecommerce — products, payments, checkout",       them: "partial", note_them: "Square only" },
-        { feature: "Transparent, flat pricing",                      them: "partial", note_them: "free tier exists" },
-        { feature: "Direct human contact throughout",                them: "cross",   note_them: "" },
-        { feature: "One-time fee, no forced subscription",           them: "cross",   note_them: "" },
-      ]
-    },
-    wordpress_com: {
-      label: "WordPress.com",
-      note: "WordPress.com (hosted) restricts plugins and customization on lower plans ($4–$45/mo). Ecommerce requires the Commerce plan at $45/mo, SEO capabilities are plan-dependent, and you don't own the underlying infrastructure.",
-      rows: [
-        { feature: "Custom visual design (not a template)",          them: "partial", note_them: "theme-based" },
-        { feature: "You own the site and can move it anytime",       them: "partial", note_them: "export limited" },
-        { feature: "Real SEO structure (properly indexed)",          them: "partial", note_them: "plan-dependent" },
-        { feature: "Ecommerce — products, payments, checkout",       them: "partial", note_them: "$45/mo plan only" },
-        { feature: "Transparent, flat pricing",                      them: "partial", note_them: "monthly fees" },
-        { feature: "Direct human contact throughout",                them: "cross",   note_them: "" },
-        { feature: "One-time fee, no forced subscription",           them: "cross",   note_them: "" },
-      ]
-    }
-  };
-
-  function renderCell(type, note) {
-    if (type === "check")   return `<span class="check">✓</span>`;
-    if (type === "cross")   return `<span class="cross">✕</span>`;
-    if (type === "partial") return `<span class="partial">${note || '~'}</span>`;
-    return '';
+<script>
+const competitors = {
+  godaddy: {
+    label: "GoDaddy",
+    note: "GoDaddy's done-for-you design service starts around $499, but the site is template-driven and locked to their platform — you can't move it. Monthly builder plans run $10–$27/mo with basic SEO tools, no custom code access, and ecommerce only on the highest tier.",
+    rows: [
+      { feature: "Custom visual design (not a template)",        them: "cross",   note_them: "" },
+      { feature: "You own the site and can move it anytime",     them: "cross",   note_them: "" },
+      { feature: "Real SEO structure (properly indexed)",        them: "partial", note_them: "limited" },
+      { feature: "Ecommerce — products, payments, checkout",     them: "partial", note_them: "top tier only" },
+      { feature: "Transparent, flat pricing",                    them: "cross",   note_them: "" },
+      { feature: "Direct human contact throughout",              them: "cross",   note_them: "" },
+      { feature: "One-time fee, no forced subscription",         them: "cross",   note_them: "" },
+    ]
+  },
+  squarespace: {
+    label: "Squarespace",
+    note: "Squarespace has polished templates and decent ecommerce, but you're locked into monthly fees of $16–$49/mo indefinitely, SEO is limited compared to custom builds, and your site cannot be moved off their platform.",
+    rows: [
+      { feature: "Custom visual design (not a template)",        them: "partial", note_them: "template only" },
+      { feature: "You own the site and can move it anytime",     them: "cross",   note_them: "" },
+      { feature: "Real SEO structure (properly indexed)",        them: "partial", note_them: "basic" },
+      { feature: "Ecommerce — products, payments, checkout",     them: "partial", note_them: "higher plans only" },
+      { feature: "Transparent, flat pricing",                    them: "partial", note_them: "monthly fees" },
+      { feature: "Direct human contact throughout",              them: "cross",   note_them: "" },
+      { feature: "One-time fee, no forced subscription",         them: "cross",   note_them: "" },
+    ]
+  },
+  wix: {
+    label: "Wix",
+    note: "Wix is flexible and beginner-friendly with plans from $17–$35/mo, but sites are known to underperform on SEO, ecommerce requires a paid upgrade, and migrating your content off Wix once built is very difficult.",
+    rows: [
+      { feature: "Custom visual design (not a template)",        them: "partial", note_them: "template only" },
+      { feature: "You own the site and can move it anytime",     them: "cross",   note_them: "" },
+      { feature: "Real SEO structure (properly indexed)",        them: "partial", note_them: "inconsistent" },
+      { feature: "Ecommerce — products, payments, checkout",     them: "partial", note_them: "paid upgrade" },
+      { feature: "Transparent, flat pricing",                    them: "partial", note_them: "monthly fees" },
+      { feature: "Direct human contact throughout",              them: "cross",   note_them: "" },
+      { feature: "One-time fee, no forced subscription",         them: "cross",   note_them: "" },
+    ]
+  },
+  weebly: {
+    label: "Weebly / Square Online",
+    note: "Square Online works well if you're already using Square for payments, but design flexibility is very limited, SEO is basic, ecommerce is tied tightly to Square's ecosystem, and the platform has seen little meaningful development in recent years.",
+    rows: [
+      { feature: "Custom visual design (not a template)",        them: "cross",   note_them: "" },
+      { feature: "You own the site and can move it anytime",     them: "cross",   note_them: "" },
+      { feature: "Real SEO structure (properly indexed)",        them: "partial", note_them: "basic" },
+      { feature: "Ecommerce — products, payments, checkout",     them: "partial", note_them: "Square only" },
+      { feature: "Transparent, flat pricing",                    them: "partial", note_them: "free tier exists" },
+      { feature: "Direct human contact throughout",              them: "cross",   note_them: "" },
+      { feature: "One-time fee, no forced subscription",         them: "cross",   note_them: "" },
+    ]
+  },
+  wordpress_com: {
+    label: "WordPress.com",
+    note: "WordPress.com (hosted) restricts plugins and customization on lower plans ($4–$45/mo). Ecommerce requires the Commerce plan at $45/mo, SEO capabilities are plan-dependent, and you don't own the underlying infrastructure.",
+    rows: [
+      { feature: "Custom visual design (not a template)",        them: "partial", note_them: "theme-based" },
+      { feature: "You own the site and can move it anytime",     them: "partial", note_them: "export limited" },
+      { feature: "Real SEO structure (properly indexed)",        them: "partial", note_them: "plan-dependent" },
+      { feature: "Ecommerce — products, payments, checkout",     them: "partial", note_them: "$45/mo plan only" },
+      { feature: "Transparent, flat pricing",                    them: "partial", note_them: "monthly fees" },
+      { feature: "Direct human contact throughout",              them: "cross",   note_them: "" },
+      { feature: "One-time fee, no forced subscription",         them: "cross",   note_them: "" },
+    ]
   }
+};
 
-  function updateComparison(key) {
-    const comp = competitors[key];
-    if (!comp) return;
-    document.getElementById('compColHead').textContent = comp.label;
-    document.getElementById('compareNote').textContent = comp.note;
-    const tbody = document.getElementById('compareBody');
-    tbody.innerHTML = comp.rows.map(row => `
-      <tr>
-        <td>${row.feature}</td>
-        <td>${renderCell(row.them, row.note_them)}</td>
-        <td><span class="check">✓</span></td>
-      </tr>
-    `).join('');
-  }
+function renderCell(type, note) {
+  if (type === "check")   return `<span class="check">✓</span>`;
+  if (type === "cross")   return `<span class="cross">✕</span>`;
+  if (type === "partial") return `<span class="partial">${note || '~'}</span>`;
+  return '';
+}
 
-  updateComparison('godaddy');
-  </script>
+function updateComparison(key) {
+  const comp = competitors[key];
+  if (!comp) return;
+  document.getElementById('compColHead').textContent = comp.label;
+  document.getElementById('compareNote').textContent = comp.note;
+  const tbody = document.getElementById('compareBody');
+  tbody.innerHTML = comp.rows.map(row => `
+    <tr>
+      <td>${row.feature}</td>
+      <td>${renderCell(row.them, row.note_them)}</td>
+      <td><span class="check">✓</span></td>
+    </tr>
+  `).join('');
+}
 
-  <div class="cta-block scroll-anim">
-    <p class="cta-block__text">your site should work as hard as you do. you should own every pixel of it.</p>
-    <a href="mailto:vanessancuevas@gmail.com?subject=Let%27s%20Work%20Together" class="intro-cta">let's grow something ✦</a>
+updateComparison('godaddy');
+</script>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-inner scroll-anim">
+    <h2 class="closing-headline">Let's build something<br>worth finding.</h2>
+    <p class="closing-sub">Free 30-minute discovery call. Flat fees. You own everything.</p>
+    <a href="mailto:vanessancuevas@gmail.com?subject=Let%27s%20Work%20Together" class="btn btn--white">Let's grow something ✦</a>
   </div>
+</section>
 
-  <footer class="scroll-anim">
-    <div class="footer-note">
-      <strong>Regulated or sensitive industries:</strong> Payment processor selection for industries subject to legal or compliance complexity requires legal review by your team. <button class="modal-link" onclick="document.getElementById('clauseModal').classList.add('open')">Read the full Regulated Industries Intake Clause → what it covers, what I'm responsible for, and what requires your legal team</button>
-    </div>
-    <div class="footer-mark">rooted work, built to grow</div>
-  </footer>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-note">
+      <strong>Regulated or sensitive industries:</strong> Payment processor selection for industries subject to legal or compliance complexity requires legal review by your team. <button class="modal-link" onclick="document.getElementById('clauseModal').classList.add('open')">Read the full Regulated Industries Intake Clause →</button>
+    </p>
+    <span class="footer-mark">rooted work, built to grow</span>
+  </div>
+</footer>
 
-  <!-- Regulated Industries Modal -->
-  <div class="modal-overlay" id="clauseModal" onclick="if(event.target===this)this.classList.remove('open')">
-    <div class="modal-panel">
-      <span class="modal-handle"></span>
-      <button class="modal-close" onclick="document.getElementById('clauseModal').classList.remove('open')" aria-label="Close">✕</button>
+<!-- REGULATED INDUSTRIES MODAL -->
+<div class="modal-overlay" id="clauseModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-panel">
+    <span class="modal-handle"></span>
+    <button class="modal-close" onclick="document.getElementById('clauseModal').classList.remove('open')" aria-label="Close">✕</button>
 
-      <div class="modal-body">
-        <div class="modal-header">
-          <div class="modal-name">Vanessa Cuevas — Web Design &amp; Digital Presence</div>
-          <h2 class="modal-title">Regulated Industries<br>Intake Clause</h2>
-          <p class="modal-subtitle">To be reviewed and signed prior to project kickoff</p>
-          <div class="m-print-actions" style="padding-top:0; border-top:none; margin-top:0; margin-bottom:0;">
-            <p class="m-print-note">Fill in your details, then save as PDF for your records.</p>
-            <button class="m-print-btn" onclick="printClause()">↓ Save as PDF</button>
-          </div>
-        </div>
-
-        <div class="m-section">
-          <span class="m-label">Purpose</span>
-          <p>This clause applies to all clients operating in industries subject to legal, regulatory, or compliance complexity at the federal, state, or local level. It defines the scope of my responsibilities as a web designer and clarifies what falls outside my area of practice.</p>
-          <p>Signing this clause is a condition of project kickoff for any client in a regulated industry. It protects both parties and ensures we begin the project with shared, accurate expectations.</p>
-        </div>
-
-        <div class="m-section">
-          <span class="m-label">Applies To</span>
-          <p>This clause applies to clients operating in the following industries, among others:</p>
-          <div class="m-tags">
-            <span class="m-tag">Psychedelics &amp; plant medicine</span>
-            <span class="m-tag">Cannabis &amp; hemp</span>
-            <span class="m-tag">Adult services</span>
-            <span class="m-tag">Firearms &amp; ammunition</span>
-            <span class="m-tag">Supplements &amp; nutraceuticals</span>
-            <span class="m-tag">Religious &amp; donation-based orgs</span>
-            <span class="m-tag">Financial services</span>
-            <span class="m-tag">Healthcare &amp; wellness</span>
-          </div>
-          <p>If you are unsure whether this clause applies to your organization, please raise it during your discovery call.</p>
-        </div>
-
-        <div class="m-section">
-          <span class="m-label">Scope of Services</span>
-          <p>As your web designer, I provide design, development, and digital presence services. My scope includes visual design, front-end development, site structure, content presentation, and third-party integrations as agreed in your project scope.</p>
-          <p>I do not provide legal advice, regulatory guidance, tax counsel, or compliance consulting of any kind. Nothing in our engagement or communications should be interpreted as such.</p>
-        </div>
-
-        <div class="m-section">
-          <span class="m-label">Payment Processors &amp; Ecommerce</span>
-          <div class="m-clause-box">
-            <span class="m-clause-title">Standard Clause — Payment Processing</span>
-            <p>For clients in regulated or sensitive industries, payment processor selection requires independent legal and compliance review by your team and qualified counsel. I implement the payment solution your organization selects and approves — I do not advise on processor eligibility, terms of service compliance, banking relationships, or regulatory suitability. Processor termination, account freezes, or legal consequences arising from payment processor use are outside the scope of my services and responsibility.</p>
-          </div>
-          <p>This means: before I integrate any payment, donation, or ecommerce system into your site, your team is responsible for confirming that the chosen processor permits your specific use case under their terms of service, applicable state law, and federal law.</p>
-          <p>I will implement what you bring me. I will not select, vet, or recommend processors for regulated use cases.</p>
-        </div>
-
-        <div class="m-section">
-          <span class="m-label">Content &amp; Messaging</span>
-          <p>You are responsible for ensuring that all content, claims, and messaging published on your site comply with applicable laws and regulations — including but not limited to health claims, financial disclosures, age restrictions, and required legal notices. I will flag obvious concerns as a courtesy, but content compliance review is your responsibility.</p>
-        </div>
-
-        <div class="m-section">
-          <span class="m-label">Mutual Understanding</span>
-          <p>By signing below, both parties confirm they have read and understood this clause, that the client accepts responsibility for legal and compliance matters within their industry, and that this clause forms part of the overall project agreement.</p>
-          <div class="m-note-box">
-            <p><strong>A note on working together:</strong> This clause exists to create clarity, not distance. I genuinely want to support organizations doing meaningful work — including those in emerging, complex, or unconventional spaces. This document simply ensures we both understand where my expertise ends and yours begins, so the project can move forward with integrity on both sides.</p>
-          </div>
-        </div>
-
-        <div class="m-sig-block">
-          <div class="m-sig-field">
-            <label>Client signature</label>
-            <div class="m-sig-line"></div>
-            <span class="m-hint">Print name &amp; sign</span>
-          </div>
-          <div class="m-sig-field">
-            <label>Date</label>
-            <div class="m-sig-line"></div>
-            <span class="m-hint">MM / DD / YYYY</span>
-          </div>
-          <div class="m-sig-field">
-            <label>Organization name</label>
-            <div class="m-sig-line"></div>
-            <span class="m-hint">Legal or DBA name</span>
-          </div>
-          <div class="m-sig-field">
-            <label>Designer signature</label>
-            <div class="m-sig-line"></div>
-            <span class="m-hint">Vanessa Cuevas (I will sign and email back the completed PDF agreement)</span>
-          </div>
-        </div>
-
-        <div class="m-footer">
-          <span class="m-footer-name">Vanessa Cuevas</span>
-          <span class="m-footer-url">vanessacuevas.design</span>
-        </div>
-
-        <div class="m-print-actions">
+    <div class="modal-body">
+      <div class="modal-header">
+        <div class="modal-name">Vanessa Cuevas — Web Design &amp; Digital Presence</div>
+        <h2 class="modal-title">Regulated Industries<br>Intake Clause</h2>
+        <p class="modal-subtitle">To be reviewed and signed prior to project kickoff</p>
+        <div class="m-print-actions" style="padding-top:0;border-top:none;margin-top:0;margin-bottom:0;">
           <p class="m-print-note">Fill in your details, then save as PDF for your records.</p>
           <button class="m-print-btn" onclick="printClause()">↓ Save as PDF</button>
         </div>
       </div>
+
+      <div class="m-section">
+        <span class="m-label">Purpose</span>
+        <p>This clause applies to all clients operating in industries subject to legal, regulatory, or compliance complexity at the federal, state, or local level. It defines the scope of my responsibilities as a web designer and clarifies what falls outside my area of practice.</p>
+        <p>Signing this clause is a condition of project kickoff for any client in a regulated industry. It protects both parties and ensures we begin the project with shared, accurate expectations.</p>
+      </div>
+
+      <div class="m-section">
+        <span class="m-label">Applies To</span>
+        <p>This clause applies to clients operating in the following industries, among others:</p>
+        <div class="m-tags">
+          <span class="m-tag">Psychedelics &amp; plant medicine</span>
+          <span class="m-tag">Cannabis &amp; hemp</span>
+          <span class="m-tag">Adult services</span>
+          <span class="m-tag">Firearms &amp; ammunition</span>
+          <span class="m-tag">Supplements &amp; nutraceuticals</span>
+          <span class="m-tag">Religious &amp; donation-based orgs</span>
+          <span class="m-tag">Financial services</span>
+          <span class="m-tag">Healthcare &amp; wellness</span>
+        </div>
+        <p>If you are unsure whether this clause applies to your organization, please raise it during your discovery call.</p>
+      </div>
+
+      <div class="m-section">
+        <span class="m-label">Scope of Services</span>
+        <p>As your web designer, I provide design, development, and digital presence services. My scope includes visual design, front-end development, site structure, content presentation, and third-party integrations as agreed in your project scope.</p>
+        <p>I do not provide legal advice, regulatory guidance, tax counsel, or compliance consulting of any kind. Nothing in our engagement or communications should be interpreted as such.</p>
+      </div>
+
+      <div class="m-section">
+        <span class="m-label">Payment Processors &amp; Ecommerce</span>
+        <div class="m-clause-box">
+          <span class="m-clause-title">Standard Clause — Payment Processing</span>
+          <p>For clients in regulated or sensitive industries, payment processor selection requires independent legal and compliance review by your team and qualified counsel. I implement the payment solution your organization selects and approves — I do not advise on processor eligibility, terms of service compliance, banking relationships, or regulatory suitability. Processor termination, account freezes, or legal consequences arising from payment processor use are outside the scope of my services and responsibility.</p>
+        </div>
+        <p>This means: before I integrate any payment, donation, or ecommerce system into your site, your team is responsible for confirming that the chosen processor permits your specific use case under their terms of service, applicable state law, and federal law.</p>
+        <p>I will implement what you bring me. I will not select, vet, or recommend processors for regulated use cases.</p>
+      </div>
+
+      <div class="m-section">
+        <span class="m-label">Content &amp; Messaging</span>
+        <p>You are responsible for ensuring that all content, claims, and messaging published on your site comply with applicable laws and regulations — including but not limited to health claims, financial disclosures, age restrictions, and required legal notices. I will flag obvious concerns as a courtesy, but content compliance review is your responsibility.</p>
+      </div>
+
+      <div class="m-section">
+        <span class="m-label">Mutual Understanding</span>
+        <p>By signing below, both parties confirm they have read and understood this clause, that the client accepts responsibility for legal and compliance matters within their industry, and that this clause forms part of the overall project agreement.</p>
+        <div class="m-note-box">
+          <p><strong>A note on working together:</strong> This clause exists to create clarity, not distance. I genuinely want to support organizations doing meaningful work — including those in emerging, complex, or unconventional spaces. This document simply ensures we both understand where my expertise ends and yours begins, so the project can move forward with integrity on both sides.</p>
+        </div>
+      </div>
+
+      <div class="m-sig-block">
+        <div class="m-sig-field">
+          <label>Client signature</label>
+          <div class="m-sig-line"></div>
+          <span class="m-hint">Print name &amp; sign</span>
+        </div>
+        <div class="m-sig-field">
+          <label>Date</label>
+          <div class="m-sig-line"></div>
+          <span class="m-hint">MM / DD / YYYY</span>
+        </div>
+        <div class="m-sig-field">
+          <label>Organization name</label>
+          <div class="m-sig-line"></div>
+          <span class="m-hint">Legal or DBA name</span>
+        </div>
+        <div class="m-sig-field">
+          <label>Designer signature</label>
+          <div class="m-sig-line"></div>
+          <span class="m-hint">Vanessa Cuevas (I will sign and email back the completed PDF agreement)</span>
+        </div>
+      </div>
+
+      <div class="m-footer">
+        <span class="m-footer-name">Vanessa Cuevas</span>
+        <span class="m-footer-url">vanessacuevas.design</span>
+      </div>
+
+      <div class="m-print-actions">
+        <p class="m-print-note">Fill in your details, then save as PDF for your records.</p>
+        <button class="m-print-btn" onclick="printClause()">↓ Save as PDF</button>
+      </div>
     </div>
   </div>
-
-  <script>
-  function printClause() {
-    const content = document.querySelector('.modal-body').innerHTML;
-    const styles = `
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; font-size: 14px; color: #000; background: white; }
-      #clauseContent { padding: 48px 56px 64px; }
-      .m-print-actions, .modal-close, .modal-handle { display: none !important; }
-      .modal-header { margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid rgba(60,60,67,0.18); }
-      .modal-name { font-size: 0.72rem; font-weight: 500; color: #aeaeb2; margin-bottom: 5px; letter-spacing: 0.05em; text-transform: uppercase; }
-      .modal-title { font-size: 1.5rem; font-weight: 700; color: #000; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 5px; }
-      .modal-subtitle { font-size: 0.78rem; color: #636366; }
-      .m-section { margin-bottom: 24px; }
-      .m-label { display: block; font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: #636366; font-weight: 400; margin-bottom: 8px; border-bottom: 1px solid rgba(60,60,67,0.18); padding-bottom: 4px; }
-      p { font-size: 0.86rem; line-height: 1.8; color: #000; margin-bottom: 10px; }
-      p:last-child { margin-bottom: 0; }
-      .m-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
-      .m-tag { background: rgba(120,120,128,0.12); border-radius: 100px; padding: 3px 10px; font-size: 0.72rem; color: #000; font-weight: 500; }
-      .m-clause-box { background: rgba(120,120,128,0.08); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
-      .m-clause-title { display: block; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #aeaeb2; font-weight: 500; margin-bottom: 8px; }
-      .m-clause-box p { font-size: 0.84rem; margin: 0; }
-      .m-note-box { background: rgba(255,204,0,0.1); border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
-      .m-note-box p { font-size: 0.8rem; color: #000; margin: 0; }
-      .m-sig-block { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(60,60,67,0.18); display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-      .m-sig-field label { display: block; font-size: 0.63rem; letter-spacing: 0.08em; text-transform: uppercase; color: #aeaeb2; font-weight: 500; margin-bottom: 6px; }
-      .m-sig-line { border-bottom: 1px solid #c6c6c8; height: 36px; margin-bottom: 4px; }
-      .m-hint { font-size: 0.67rem; color: #636366; }
-      .m-footer { margin-top: 28px; display: flex; justify-content: space-between; border-top: 1px solid rgba(60,60,67,0.18); padding-top: 16px; }
-      .m-footer-name { font-size: 0.9rem; font-weight: 600; color: #636366; }
-      .m-footer-url { font-size: 0.72rem; color: #aeaeb2; }
-    `;
-    const win = window.open('', '_blank');
-    win.document.write(`<!DOCTYPE html><html><head><title>Regulated Industries Intake Clause — Vanessa Cuevas</title><style>${styles}</style></head><body><div id="clauseContent">${content}</div></body></html>`);
-    win.document.close();
-    win.onload = () => { win.focus(); win.print(); };
-  }
-  </script>
-
-  <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
-
-  document.querySelectorAll('.scroll-anim').forEach(el => observer.observe(el));
-  </script>
-
 </div>
+
+<script>
+function printClause() {
+  const content = document.querySelector('.modal-body').innerHTML;
+  const styles = `
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; font-size: 14px; color: #000; background: white; }
+    #clauseContent { padding: 48px 56px 64px; }
+    .m-print-actions, .modal-close, .modal-handle { display: none !important; }
+    .modal-header { margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid rgba(60,60,67,0.18); }
+    .modal-name { font-size: 0.72rem; font-weight: 500; color: #aeaeb2; margin-bottom: 5px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .modal-title { font-size: 1.5rem; font-weight: 700; color: #000; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 5px; }
+    .modal-subtitle { font-size: 0.78rem; color: #636366; }
+    .m-section { margin-bottom: 24px; }
+    .m-label { display: block; font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: #636366; font-weight: 400; margin-bottom: 8px; border-bottom: 1px solid rgba(60,60,67,0.18); padding-bottom: 4px; }
+    p { font-size: 0.86rem; line-height: 1.8; color: #000; margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+    .m-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+    .m-tag { background: rgba(120,120,128,0.12); border-radius: 100px; padding: 3px 10px; font-size: 0.72rem; color: #000; font-weight: 500; }
+    .m-clause-box { background: rgba(120,120,128,0.08); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+    .m-clause-title { display: block; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #aeaeb2; font-weight: 500; margin-bottom: 8px; }
+    .m-clause-box p { font-size: 0.84rem; margin: 0; }
+    .m-note-box { background: rgba(255,204,0,0.1); border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .m-note-box p { font-size: 0.8rem; color: #000; margin: 0; }
+    .m-sig-block { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(60,60,67,0.18); display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .m-sig-field label { display: block; font-size: 0.63rem; letter-spacing: 0.08em; text-transform: uppercase; color: #aeaeb2; font-weight: 500; margin-bottom: 6px; }
+    .m-sig-line { border-bottom: 1px solid #c6c6c8; height: 36px; margin-bottom: 4px; }
+    .m-hint { font-size: 0.67rem; color: #636366; }
+    .m-footer { margin-top: 28px; display: flex; justify-content: space-between; border-top: 1px solid rgba(60,60,67,0.18); padding-top: 16px; }
+    .m-footer-name { font-size: 0.9rem; font-weight: 600; color: #636366; }
+    .m-footer-url { font-size: 0.72rem; color: #aeaeb2; }
+    .tooltip-wrap { display: none; }
+  `;
+  const win = window.open('', '_blank');
+  win.document.write(`<!DOCTYPE html><html><head><title>Regulated Industries Intake Clause — Vanessa Cuevas</title><style>${styles}</style></head><body><div id="clauseContent">${content}</div></body></html>`);
+  win.document.close();
+  win.onload = () => { win.focus(); win.print(); };
+}
+</script>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+document.querySelectorAll('.scroll-anim').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
