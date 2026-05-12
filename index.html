@@ -100,6 +100,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #0c1a10;
   }
 
   .hero-video {
@@ -132,7 +133,7 @@
 
   .eyebrow {
     display: block;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 400;
     color: rgba(255,255,255,0.65);
     text-transform: uppercase;
@@ -172,14 +173,14 @@
     border: none;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
-    transition: opacity 0.15s, transform 0.18s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.18s;
+    transition: opacity 0.15s, transform 0.18s cubic-bezier(0.25,0.46,0.45,0.94);
   }
 
-  .btn:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,107,62,0.28); }
+  .btn:hover { opacity: 0.88; transform: translateY(-2px); }
   .btn:active { opacity: 0.72; transform: scale(0.97); box-shadow: none; }
 
   .btn--white { background: #ffffff; color: #0d0d0d; }
-  .btn--white:hover { box-shadow: 0 8px 28px rgba(255,255,255,0.22); }
+  .btn--white:hover { opacity: 0.88; transform: translateY(-2px); }
 
   /* ── SECTIONS ── */
   .section { padding: 96px 40px; }
@@ -230,8 +231,8 @@
     display: inline-block;
     background: var(--green);
     color: #fff;
-    font-size: 0.63rem;
-    letter-spacing: 0.07em;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     padding: 3px 10px;
     border-radius: var(--r-pill);
@@ -331,7 +332,7 @@
     border-radius: 50%;
     background: var(--fill);
     color: var(--text-2);
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     font-weight: 600;
     cursor: default;
     flex-shrink: 0;
@@ -423,7 +424,7 @@
   .compare-table th {
     text-align: left;
     padding: 6px 8px 12px 0;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--text-3);
@@ -579,7 +580,7 @@
 
   .modal-header { margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid var(--sep); }
 
-  .modal-name { font-size: 0.72rem; font-weight: 500; color: var(--text-3); margin-bottom: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .modal-name { font-size: 0.78rem; font-weight: 500; color: var(--text-3); margin-bottom: 8px; letter-spacing: 0.01em; }
 
   .modal-title { font-size: 1.5rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 6px; }
 
@@ -598,7 +599,7 @@
 
   .m-clause-box { background: var(--fill); border-radius: var(--r-sm); padding: 14px 18px; margin: 12px 0; }
 
-  .m-clause-title { display: block; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); font-weight: 500; margin-bottom: 8px; }
+  .m-clause-title { display: block; font-size: 0.75rem; letter-spacing: 0.01em; color: var(--text-3); font-weight: 600; margin-bottom: 8px; }
 
   .m-clause-box p { font-size: 0.86rem; line-height: 1.8; color: var(--text); margin: 0; }
 
@@ -608,10 +609,10 @@
 
   .m-sig-block { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--sep); display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-  .m-sig-field label { display: block; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); font-weight: 500; margin-bottom: 8px; }
+  .m-sig-field label { display: block; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); font-weight: 500; margin-bottom: 8px; }
 
   .m-sig-line { border-bottom: 1px solid var(--sep-op); height: 28px; margin-bottom: 4px; }
-  .m-hint { font-size: 0.7rem; color: var(--text-2); }
+  .m-hint { font-size: 0.75rem; color: var(--text-2); }
 
   .m-footer { margin-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
   .m-footer-name { font-size: 0.9rem; font-weight: 600; color: var(--text-2); letter-spacing: -0.01em; }
@@ -1110,24 +1111,24 @@ function printClause() {
     #clauseContent { padding: 48px 56px 64px; }
     .m-print-actions, .modal-close, .modal-handle { display: none !important; }
     .modal-header { margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid rgba(60,60,67,0.18); }
-    .modal-name { font-size: 0.72rem; font-weight: 500; color: #aeaeb2; margin-bottom: 5px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .modal-name { font-size: 0.78rem; font-weight: 500; color: #aeaeb2; margin-bottom: 5px; letter-spacing: 0.01em; }
     .modal-title { font-size: 1.5rem; font-weight: 700; color: #000; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 5px; }
     .modal-subtitle { font-size: 0.78rem; color: #636366; }
     .m-section { margin-bottom: 24px; }
-    .m-label { display: block; font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: #636366; font-weight: 400; margin-bottom: 8px; border-bottom: 1px solid rgba(60,60,67,0.18); padding-bottom: 4px; }
+    .m-label { display: block; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: #636366; font-weight: 400; margin-bottom: 8px; border-bottom: 1px solid rgba(60,60,67,0.18); padding-bottom: 4px; }
     p { font-size: 0.86rem; line-height: 1.8; color: #000; margin-bottom: 10px; }
     p:last-child { margin-bottom: 0; }
     .m-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
-    .m-tag { background: rgba(120,120,128,0.12); border-radius: 100px; padding: 3px 10px; font-size: 0.72rem; color: #000; font-weight: 500; }
+    .m-tag { background: rgba(120,120,128,0.12); border-radius: 100px; padding: 3px 10px; font-size: 0.75rem; color: #000; font-weight: 500; }
     .m-clause-box { background: rgba(120,120,128,0.08); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
-    .m-clause-title { display: block; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #aeaeb2; font-weight: 500; margin-bottom: 8px; }
+    .m-clause-title { display: block; font-size: 0.75rem; letter-spacing: 0.01em; color: #aeaeb2; font-weight: 600; margin-bottom: 8px; }
     .m-clause-box p { font-size: 0.84rem; margin: 0; }
     .m-note-box { background: rgba(255,204,0,0.1); border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
     .m-note-box p { font-size: 0.8rem; color: #000; margin: 0; }
     .m-sig-block { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(60,60,67,0.18); display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-    .m-sig-field label { display: block; font-size: 0.63rem; letter-spacing: 0.08em; text-transform: uppercase; color: #aeaeb2; font-weight: 500; margin-bottom: 6px; }
+    .m-sig-field label { display: block; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: #aeaeb2; font-weight: 500; margin-bottom: 6px; }
     .m-sig-line { border-bottom: 1px solid #c6c6c8; height: 36px; margin-bottom: 4px; }
-    .m-hint { font-size: 0.67rem; color: #636366; }
+    .m-hint { font-size: 0.75rem; color: #636366; }
     .m-footer { margin-top: 28px; display: flex; justify-content: space-between; border-top: 1px solid rgba(60,60,67,0.18); padding-top: 16px; }
     .m-footer-name { font-size: 0.9rem; font-weight: 600; color: #636366; }
     .m-footer-url { font-size: 0.72rem; color: #aeaeb2; }
