@@ -5,6 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vanessa Cuevas — Web Design Services</title>
 <style>
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('fonts/PPNeueMontreal-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('fonts/PPNeueMontreal-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('fonts/PPNeueMontreal-Semibold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('fonts/PPNeueMontreal-Extrabold.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+
   :root {
     --bg:       #ffffff;
     --tinted:   #f5f5f7;
@@ -29,7 +58,7 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'PP Neue Montreal', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -53,13 +82,26 @@
     gap: 16px;
   }
 
+  .nav-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    flex-shrink: 0;
+    line-height: 1.2;
+  }
+
   .nav-name {
-    font-weight: 600;
+    font-weight: 400;
     font-size: 0.88rem;
     letter-spacing: -0.015em;
     color: var(--text);
-    text-decoration: none;
-    flex-shrink: 0;
+  }
+
+  .nav-descriptor {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--text-2);
+    letter-spacing: 0.01em;
   }
 
   .nav-right {
@@ -95,7 +137,7 @@
     position: relative;
     overflow: hidden;
     text-align: center;
-    padding: 140px 24px 128px;
+    padding: 0px 24px 60px;
     min-height: 88vh;
     display: flex;
     align-items: center;
@@ -131,6 +173,19 @@
     margin: 0 auto;
   }
 
+  .hero-logo-wrap {
+    width: clamp(280px, 48vw, 560px);
+    margin: 0 auto 16px;
+    overflow: hidden;
+    height: clamp(130px, 22vw, 260px);
+  }
+
+  .hero-logo {
+    display: block;
+    width: 100%;
+    margin-top: -4%;
+  }
+
   .eyebrow {
     display: block;
     font-size: 0.78rem;
@@ -143,7 +198,7 @@
 
   .hero-headline {
     font-size: clamp(2.6rem, 5.5vw, 4.2rem);
-    font-weight: 700;
+    font-weight: 400;
     color: #ffffff;
     letter-spacing: -0.04em;
     line-height: 1.05;
@@ -194,7 +249,7 @@
 
   .display {
     font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-    font-weight: 700;
+    font-weight: 400;
     color: var(--text);
     letter-spacing: -0.03em;
     line-height: 1.1;
@@ -227,27 +282,52 @@
   .pkg-header { padding: 24px 24px 18px; border-bottom: 1px solid var(--sep); }
   .package.featured .pkg-header { background: var(--green-bg); }
 
+  .pkg-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 4px 11px;
+    border-radius: var(--r-pill);
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  .pkg-badge--amber {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fcd34d;
+  }
+
+  .pkg-badge--green {
+    background: var(--green);
+    color: #fff;
+  }
+
+  .pkg-badge--slate {
+    background: #1c1c1e;
+    color: #e5e5ea;
+  }
+
+  /* legacy alias */
   .featured-badge {
     display: inline-block;
     background: var(--green);
     color: #fff;
     font-size: 0.75rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    font-weight: 600;
     padding: 3px 10px;
     border-radius: var(--r-pill);
-    font-weight: 600;
     margin-bottom: 12px;
   }
 
-  .pkg-name { font-size: 1.15rem; font-weight: 600; color: var(--text); letter-spacing: -0.015em; }
+  .pkg-name { font-size: 1.15rem; font-weight: 400; color: var(--text); letter-spacing: -0.015em; }
   .pkg-sub { font-size: 0.82rem; color: var(--text-2); margin-top: 4px; }
 
   .price { padding: 18px 24px; border-bottom: 1px solid var(--sep); }
 
   .price .amount {
     font-size: 2.1rem;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--text);
     letter-spacing: -0.04em;
     line-height: 1;
@@ -390,34 +470,6 @@
 
   .comparison-title { font-size: 1rem; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
 
-  .competitor-select-wrap { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-2); }
-  .competitor-select-wrap label { white-space: nowrap; }
-
-  .select-shell { position: relative; display: inline-flex; align-items: center; }
-
-  .select-shell select {
-    appearance: none;
-    background: var(--fill);
-    border: none;
-    border-radius: 8px;
-    padding: 6px 28px 6px 12px;
-    font-family: inherit;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--text);
-    cursor: pointer;
-    outline: none;
-  }
-
-  .select-shell select:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
-  .select-shell .select-arrow { position: absolute; right: 9px; font-size: 0.55rem; color: var(--text-3); pointer-events: none; }
-
-  #compareBody tr { animation: rowIn 0.18s ease both; }
-
-  @keyframes rowIn {
-    from { opacity: 0; transform: translateY(3px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
 
   .compare-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
 
@@ -461,7 +513,7 @@
 
   .closing-headline {
     font-size: clamp(2.1rem, 4.5vw, 3.4rem);
-    font-weight: 700;
+    font-weight: 400;
     color: #ffffff;
     letter-spacing: -0.04em;
     line-height: 1.08;
@@ -582,7 +634,7 @@
 
   .modal-name { font-size: 0.78rem; font-weight: 500; color: var(--text-3); margin-bottom: 8px; letter-spacing: 0.01em; }
 
-  .modal-title { font-size: 1.5rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 6px; }
+  .modal-title { font-size: 1.5rem; font-weight: 400; color: var(--text); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 6px; }
 
   .modal-subtitle { font-size: 0.82rem; color: var(--text-2); margin: 12px 0 0; }
 
@@ -693,7 +745,10 @@
 
 <!-- NAV -->
 <nav class="top-nav">
-  <span class="nav-name">Vanessa Cuevas</span>
+  <div class="nav-brand">
+    <span class="nav-name">Vanessa Cuevas</span>
+    <span class="nav-descriptor">Web Design &amp; Digital Presence</span>
+  </div>
   <div class="nav-right">
     <span class="nav-loc">Bay Area, CA</span>
     <a class="nav-cta" href="mailto:vanessancuevas@gmail.com?subject=Let%27s%20Work%20Together">Get in touch</a>
@@ -707,10 +762,9 @@
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
-    <span class="eyebrow">Web Design &amp; Digital Presence</span>
     <h1 class="hero-headline">Rooted in your brand.<br>Built to be found.</h1>
     <p class="hero-sub">Custom websites for small businesses and independent practitioners — fast, findable, and yours to keep.</p>
-    <a href="mailto:vanessancuevas@gmail.com?subject=Let%27s%20Work%20Together" class="btn">Let's grow something ✦</a>
+    <a href="mailto:vanessancuevas@gmail.com?subject=Let%27s%20Work%20Together" class="btn">Let's grow something together ✦</a>
   </div>
 </section>
 
@@ -726,6 +780,7 @@
 
       <div class="package scroll-anim" style="--anim-delay:0ms">
         <div class="pkg-header">
+          <span class="pkg-badge pkg-badge--amber">No monthly platform fees</span>
           <div class="pkg-name">Seed</div>
           <div class="pkg-sub">Simple presence, done right</div>
         </div>
@@ -750,7 +805,7 @@
 
       <div class="package featured scroll-anim" style="--anim-delay:90ms">
         <div class="pkg-header">
-          <span class="featured-badge">Most Popular</span>
+          <span class="pkg-badge pkg-badge--green">Most popular</span>
           <div class="pkg-name">Grove</div>
           <div class="pkg-sub">Full presence with real SEO</div>
         </div>
@@ -777,6 +832,7 @@
 
       <div class="package scroll-anim" style="--anim-delay:180ms">
         <div class="pkg-header">
+          <span class="pkg-badge pkg-badge--slate">Fully custom, no limits</span>
           <div class="pkg-name">Canopy</div>
           <div class="pkg-sub">Custom build, fully scoped</div>
         </div>
@@ -854,137 +910,79 @@
       <h2 class="display">Why custom beats a platform.</h2>
     </div>
     <div class="comparison-card scroll-anim" style="--anim-delay:80ms">
-      <div class="comparison-header">
-        <div class="comparison-title">See how it stacks up</div>
-        <div class="competitor-select-wrap">
-          <label for="competitorSelect">Compare against</label>
-          <div class="select-shell">
-            <select id="competitorSelect" onchange="updateComparison(this.value)">
-              <option value="godaddy">GoDaddy</option>
-              <option value="squarespace">Squarespace</option>
-              <option value="wix">Wix</option>
-              <option value="weebly">Weebly / Square Online</option>
-              <option value="wordpress_com">WordPress.com</option>
-            </select>
-            <span class="select-arrow">↓</span>
-          </div>
-        </div>
-      </div>
-      <table class="compare-table" id="compareTable">
+      <table class="compare-table">
         <thead>
           <tr>
             <th>What you get</th>
-            <th id="compColHead">GoDaddy</th>
-            <th>Vanessa Cuevas</th>
+            <th>GoDaddy</th>
+            <th>Squarespace</th>
+            <th>Wix</th>
+            <th style="color: var(--green)">Your custom site</th>
           </tr>
         </thead>
-        <tbody id="compareBody"></tbody>
+        <tbody>
+          <tr>
+            <td>Custom visual design (not a template)</td>
+            <td><span class="cross">✕</span></td>
+            <td><span class="partial">template only</span></td>
+            <td><span class="partial">template only</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>You own the site and can move it anytime</td>
+            <td><span class="cross">✕</span></td>
+            <td><span class="cross">✕</span></td>
+            <td><span class="cross">✕</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Real SEO structure (properly indexed)</td>
+            <td><span class="partial">limited</span></td>
+            <td><span class="partial">basic</span></td>
+            <td><span class="partial">inconsistent</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Ecommerce — products, payments, checkout</td>
+            <td><span class="partial">top tier only</span></td>
+            <td><span class="partial">higher plans only</span></td>
+            <td><span class="partial">paid upgrade</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Transparent, flat pricing</td>
+            <td><span class="cross">✕</span></td>
+            <td><span class="partial">monthly fees</span></td>
+            <td><span class="partial">monthly fees</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Direct human contact throughout</td>
+            <td><span class="cross">✕</span></td>
+            <td><span class="cross">✕</span></td>
+            <td><span class="cross">✕</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>One-time fee, no forced subscription</td>
+            <td><span class="cross">✕</span></td>
+            <td><span class="cross">✕</span></td>
+            <td><span class="cross">✕</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+        </tbody>
       </table>
-      <p id="compareNote"></p>
     </div>
   </div>
 </section>
 
-<script>
-const competitors = {
-  godaddy: {
-    label: "GoDaddy",
-    note: "GoDaddy's done-for-you design service starts around $499, but the site is template-driven and locked to their platform — you can't move it. Monthly builder plans run $10–$27/mo with basic SEO tools, no custom code access, and ecommerce only on the highest tier.",
-    rows: [
-      { feature: "Custom visual design (not a template)",        them: "cross",   note_them: "" },
-      { feature: "You own the site and can move it anytime",     them: "cross",   note_them: "" },
-      { feature: "Real SEO structure (properly indexed)",        them: "partial", note_them: "limited" },
-      { feature: "Ecommerce — products, payments, checkout",     them: "partial", note_them: "top tier only" },
-      { feature: "Transparent, flat pricing",                    them: "cross",   note_them: "" },
-      { feature: "Direct human contact throughout",              them: "cross",   note_them: "" },
-      { feature: "One-time fee, no forced subscription",         them: "cross",   note_them: "" },
-    ]
-  },
-  squarespace: {
-    label: "Squarespace",
-    note: "Squarespace has polished templates and decent ecommerce, but you're locked into monthly fees of $16–$49/mo indefinitely, SEO is limited compared to custom builds, and your site cannot be moved off their platform.",
-    rows: [
-      { feature: "Custom visual design (not a template)",        them: "partial", note_them: "template only" },
-      { feature: "You own the site and can move it anytime",     them: "cross",   note_them: "" },
-      { feature: "Real SEO structure (properly indexed)",        them: "partial", note_them: "basic" },
-      { feature: "Ecommerce — products, payments, checkout",     them: "partial", note_them: "higher plans only" },
-      { feature: "Transparent, flat pricing",                    them: "partial", note_them: "monthly fees" },
-      { feature: "Direct human contact throughout",              them: "cross",   note_them: "" },
-      { feature: "One-time fee, no forced subscription",         them: "cross",   note_them: "" },
-    ]
-  },
-  wix: {
-    label: "Wix",
-    note: "Wix is flexible and beginner-friendly with plans from $17–$35/mo, but sites are known to underperform on SEO, ecommerce requires a paid upgrade, and migrating your content off Wix once built is very difficult.",
-    rows: [
-      { feature: "Custom visual design (not a template)",        them: "partial", note_them: "template only" },
-      { feature: "You own the site and can move it anytime",     them: "cross",   note_them: "" },
-      { feature: "Real SEO structure (properly indexed)",        them: "partial", note_them: "inconsistent" },
-      { feature: "Ecommerce — products, payments, checkout",     them: "partial", note_them: "paid upgrade" },
-      { feature: "Transparent, flat pricing",                    them: "partial", note_them: "monthly fees" },
-      { feature: "Direct human contact throughout",              them: "cross",   note_them: "" },
-      { feature: "One-time fee, no forced subscription",         them: "cross",   note_them: "" },
-    ]
-  },
-  weebly: {
-    label: "Weebly / Square Online",
-    note: "Square Online works well if you're already using Square for payments, but design flexibility is very limited, SEO is basic, ecommerce is tied tightly to Square's ecosystem, and the platform has seen little meaningful development in recent years.",
-    rows: [
-      { feature: "Custom visual design (not a template)",        them: "cross",   note_them: "" },
-      { feature: "You own the site and can move it anytime",     them: "cross",   note_them: "" },
-      { feature: "Real SEO structure (properly indexed)",        them: "partial", note_them: "basic" },
-      { feature: "Ecommerce — products, payments, checkout",     them: "partial", note_them: "Square only" },
-      { feature: "Transparent, flat pricing",                    them: "partial", note_them: "free tier exists" },
-      { feature: "Direct human contact throughout",              them: "cross",   note_them: "" },
-      { feature: "One-time fee, no forced subscription",         them: "cross",   note_them: "" },
-    ]
-  },
-  wordpress_com: {
-    label: "WordPress.com",
-    note: "WordPress.com (hosted) restricts plugins and customization on lower plans ($4–$45/mo). Ecommerce requires the Commerce plan at $45/mo, SEO capabilities are plan-dependent, and you don't own the underlying infrastructure.",
-    rows: [
-      { feature: "Custom visual design (not a template)",        them: "partial", note_them: "theme-based" },
-      { feature: "You own the site and can move it anytime",     them: "partial", note_them: "export limited" },
-      { feature: "Real SEO structure (properly indexed)",        them: "partial", note_them: "plan-dependent" },
-      { feature: "Ecommerce — products, payments, checkout",     them: "partial", note_them: "$45/mo plan only" },
-      { feature: "Transparent, flat pricing",                    them: "partial", note_them: "monthly fees" },
-      { feature: "Direct human contact throughout",              them: "cross",   note_them: "" },
-      { feature: "One-time fee, no forced subscription",         them: "cross",   note_them: "" },
-    ]
-  }
-};
-
-function renderCell(type, note) {
-  if (type === "check")   return `<span class="check">✓</span>`;
-  if (type === "cross")   return `<span class="cross">✕</span>`;
-  if (type === "partial") return `<span class="partial">${note || '~'}</span>`;
-  return '';
-}
-
-function updateComparison(key) {
-  const comp = competitors[key];
-  if (!comp) return;
-  document.getElementById('compColHead').textContent = comp.label;
-  document.getElementById('compareNote').textContent = comp.note;
-  const tbody = document.getElementById('compareBody');
-  tbody.innerHTML = comp.rows.map(row => `
-    <tr>
-      <td>${row.feature}</td>
-      <td>${renderCell(row.them, row.note_them)}</td>
-      <td><span class="check">✓</span></td>
-    </tr>
-  `).join('');
-}
-
-updateComparison('godaddy');
-</script>
 
 <!-- CLOSING -->
 <section class="closing">
   <div class="closing-inner scroll-anim">
     <h2 class="closing-headline">Let's build something<br>worth finding.</h2>
     <p class="closing-sub">Free 30-minute discovery call. Flat fees. You own everything.</p>
-    <a href="mailto:vanessancuevas@gmail.com?subject=Let%27s%20Work%20Together" class="btn btn--white">Let's grow something ✦</a>
+    <a href="mailto:vanessancuevas@gmail.com?subject=Let%27s%20Work%20Together" class="btn btn--white">Let's grow something together ✦</a>
   </div>
 </section>
 
@@ -1112,7 +1110,7 @@ function printClause() {
     .m-print-actions, .modal-close, .modal-handle { display: none !important; }
     .modal-header { margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid rgba(60,60,67,0.18); }
     .modal-name { font-size: 0.78rem; font-weight: 500; color: #aeaeb2; margin-bottom: 5px; letter-spacing: 0.01em; }
-    .modal-title { font-size: 1.5rem; font-weight: 700; color: #000; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 5px; }
+    .modal-title { font-size: 1.5rem; font-weight: 400; color: #000; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 5px; }
     .modal-subtitle { font-size: 0.78rem; color: #636366; }
     .m-section { margin-bottom: 24px; }
     .m-label { display: block; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: #636366; font-weight: 400; margin-bottom: 8px; border-bottom: 1px solid rgba(60,60,67,0.18); padding-bottom: 4px; }
@@ -1156,3 +1154,20 @@ document.querySelectorAll('.scroll-anim').forEach(el => observer.observe(el));
 
 </body>
 </html>
+').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
+tml>
+').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
+forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
+html>
