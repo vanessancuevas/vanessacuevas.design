@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Under construction — Vanessa Cuevas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #FAF7F1;
+    --ink: #232323;
+    --ink-soft: #5b5850;
+    --rule: rgba(35,35,35,0.14);
+    --day-1: #ffe3b0;
+    --day-2: #ff9a62;
+    --day-3: #e8506c;
+    --night-2: #5a7ff0;
+    --night-3: #2f4dc4;
+  }
+  *{ box-sizing:border-box; }
+  html,body{
+    margin:0;
+    padding:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    min-height:100%;
+  }
+  .wrap{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    padding: 8vh 8vw;
+    max-width: 720px;
+  }
+  .orb{
+    position:fixed;
+    top:-18vh;
+    right:-18vw;
+    width:62vmax;
+    height:62vmax;
+    border-radius:50%;
+    filter: blur(70px);
+    opacity:0.65;
+    z-index:0;
+    background: radial-gradient(circle at 32% 30%, var(--day-1), var(--day-2) 48%, var(--day-3) 72%, transparent 78%);
+  }
+  .content{ position:relative; z-index:1; }
+  .eyebrow{
+    font-family:'Inter', sans-serif;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:0 0 18px 0;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size: clamp(32px, 5vw, 56px);
+    line-height:1.15;
+    margin:0 0 20px 0;
+    letter-spacing:-0.01em;
+  }
+  h1 em{
+    font-style: italic;
+    font-weight:500;
+  }
+  p{
+    font-size: clamp(15px, 1.6vw, 18px);
+    line-height:1.65;
+    color: var(--ink);
+    max-width: 46ch;
+    margin: 0 0 32px 0;
+  }
+  a.back{
+    color: var(--ink);
+    font-size:16px;
+    text-decoration:none;
+    width:fit-content;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom:1px;
+    transition: border-color .2s ease;
+  }
+  a.back:hover{ border-color: var(--ink); }
+  a.back span{ display:inline-block; margin-right:4px; transition: transform .2s ease; }
+  a.back:hover span{ transform: translateX(-3px); }
+</style>
+</head>
+<body>
+  <div class="orb"></div>
+  <div class="wrap">
+    <div class="content">
+      <h1>This page is <em>still taking shape</em>.</h1>
+      <p>Like most good things, it's being built slowly and on purpose. Check back soon.</p>
+      <a class="back" href="index.html"><span>←</span>Back to the site</a>
+    </div>
+  </div>
+</body>
+</html>
