@@ -6,7 +6,8 @@
 <title>Under construction — Vanessa Cuevas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.typekit.net/mvz2ddf.css">
 <style>
   :root{
     --paper: #FAF7F1;
@@ -59,15 +60,16 @@
     margin:0 0 18px 0;
   }
   h1{
-    font-family:'Fraunces', serif;
+    font-family:"swear-text", serif;
     font-weight:500;
-    font-size: clamp(32px, 5vw, 56px);
+    font-size: clamp(42px, 6vw, 74px);
     line-height:1.15;
     margin:0 0 20px 0;
     letter-spacing:-0.01em;
   }
   h1 em{
-    font-style: italic;
+    font-family:"swear-text-cilati", serif;
+    font-style: normal;
     font-weight:500;
   }
   p{
@@ -89,6 +91,10 @@
   a.back:hover{ border-color: var(--ink); }
   a.back span{ display:inline-block; margin-right:4px; transition: transform .2s ease; }
   a.back:hover span{ transform: translateX(-3px); }
+
+  @media (max-width: 640px){
+    h1{ font-size: 52px; }
+  }
 </style>
 </head>
 <body>

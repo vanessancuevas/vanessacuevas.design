@@ -6,7 +6,8 @@
 <title>Vanessa — Designer / Artist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.typekit.net/mvz2ddf.css">
 <style>
   :root{
     --paper: #FAF7F1;
@@ -147,7 +148,7 @@
     flex-direction:column;
     justify-content:center;
     padding: 8vh 8vw;
-    max-width: 1100px;
+    max-width: 1600px;
   }
 
   .eyebrow{
@@ -170,23 +171,22 @@
   html[data-mode="artist"] .eyebrow::before{ background: var(--sun-3); }
 
   h1.headline{
-    font-family:'Fraunces', serif;
+    font-family:"swear-text", serif;
     font-weight:500;
-    font-size: clamp(34px, 6vw, 74px);
+    font-size: clamp(42px, 6vw, 74px);
     line-height:1.22;
     margin:0 0 28px 0;
     letter-spacing:-0.01em;
   }
 
-  .name{ font-style: italic; }
+  .name{ font-family:"swear-text-cilati", serif; }
 
   /* the giant toggle word */
   .toggle-word{
     all: unset;
     cursor: pointer;
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-style: italic;
+    font-family:"swear-text-cilati", serif;
+    font-weight:500;
     font-size: inherit;
     line-height: inherit;
     position: relative;
@@ -299,8 +299,12 @@
   .links a span.arrow{ display:inline-block; margin-left:4px; transition: transform .2s ease; }
   .links a:hover span.arrow{ transform: translateX(3px); }
 
+  .mobile-break{ display: none; }
+
   @media (max-width: 640px){
     .wrap{ padding: 10vh 7vw; }
+    .mobile-break{ display: inline; }
+    h1.headline{ font-size: 52px; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -317,7 +321,7 @@
 
   <div class="wrap">
     <h1 class="headline">
-      Hi! My name is <span class="name">Vanessa Cuevas</span>. Under <span id="clause">the sun</span>, I'm <span id="article">a</span>
+      Hi! My name is<br class="mobile-break"> <span class="name">Vanessa&nbsp;Cuevas</span>.<br>Under <span id="clause">the sun</span>,<br class="mobile-break"> I'm <span id="article">a</span>
       <button class="toggle-word" id="toggleWord" type="button" aria-pressed="false" aria-label="Toggle between Designer and Artist">
         <span class="word" id="toggleLabel">Designer</span>
       </button>.
@@ -340,7 +344,7 @@
 
       <div class="content-pane" id="paneArtist">
         <p class="bio">
-          I <b><a href="https://www.instagram.com/solarp_nk/" target="_blank" rel="noopener">forage wild clay</a></b> from the Bay Area hills and shape it into what the earth already knows.
+          I <b><a href="https://www.instagram.com/solarp_nk/" target="_blank" rel="noopener">forage wild clay</a></b> from Crow Canyon and Castro Valley and shape it into what the earth already knows.
           Between firings, I do <b><a href="https://www.instagram.com/vanessancuevas/" target="_blank" rel="noopener">illustration and figure drawing</a></b>, keeping my hands honest.
           Lately I've been building <b><a href="https://strudelpoetics.live/#Ci8vdmFpYWJsZXMgZGVjYWxyZWQgZm9yIG5vdGVzIC0%2BIG5lc3RlZCBpbnRvIHN0YWNrcyAtPiB2YXJpYWlibGVzIG9mIHN0YWNrcyBuZXN0ZWQgaW50byBhcnJhZ2VtZW50CnNldGNwcygxNzQvNjAvNCkKCmxldCBoZWFydCA9IHMoImFrYWl4cjEwX2JkIikKICAuc3RydWN0KCJ4IH4gfiB4IH4gfiB%2BIHgiKQogIC5yb29tKDIpCiAgLmxwZig2MDApCiAgLl9waWFub3JvbGwoKQoKbGV0IGRyaWZ0aW5nID0gcygid3RfZGlnaXRhbF9iYWRfZGF5IikuZ2FpbigxLjApCiAgLnN0cnVjdCgifiB%2BIH4gfiB4IH4gfiB%2BIikKICAuX2Zhc3QoMikKICAuX3BpYW5vcm9sbCgpCgpsZXQgd2hpc3BlciAgPSBzKCJnbV9rb3RvIikuZ2FpbigwLjgpLnNwZWVkKDEuMSkKICAuc3RydWN0KCJ%2BIH4gfiB%2BIH4gfiB%2BIH4gfiB%2BIH4gfiB4IH4gfiB%2BIikKCmxldCByYWluX29uID0gcygiZ21fZWxlY3RyaWNfZ3VpdGFyX211dGVkIikKICAuc3BlZWQoIjwxIDEuMDU%2BIikKCmxldCBhbmRfYnJlYXRoID0gcygiY3M6MyIpLmdhaW4oMC42KQogIC5zdHJ1Y3QoIn4gfiB4IH4gfiB%2BIHggfiIpCiAgLnNwZWVkKDAuOSkKICAuX3BpYW5vcm9sbCgpCgpsZXQgcm9vdHMgPSBub3RlKCJjMSB%2BIH4gYzEgfiBiYjAgfiB%2BIGMxIH4gfiBlYjEgfiB%2BIGYxIH4iKQogIC5zKCJzYXd0b290aCIpCiAgLmFkZChub3RlKHNpbmUucmFuZ2UoLTAuMSwgMC4xKSkpCiAgLmxwZihwZXJsaW4ucmFuZ2UoMzAwLCA5MDApLnNsb3coMikpCiAgLmxwcSg2KS5nYWluKDAuOSkKICAuYXR0YWNrKDAuMDAxKS5yZWxlYXNlKDAuMTUpCgpsZXQgdGhlX2VhcnRoID0gbm90ZSgiYzEgfiB%2BIGMxIH4gYmIwIH4gfiBjMSB%2BIH4gZWIxIH4gfiBmMSB%2BIikKICAucygic2luZSIpLmdhaW4oMikKICAuYXR0YWNrKDAuMDA1KS5yZWxlYXNlKDAuMikKCmxldCBjb3NtaWNfb24gPSBub3RlKCI8YzUgZWI1IGc1IGJiNSBnNSBlYjUgYzUgZDU%2BIikKICAucygidHJpYW5nbGUiKQogIC5nYWluKDAuMzUpCiAgLmF0dGFjaygwLjAwMSkucmVsZWFzZSgwLjA4KQogIC5scGYoMzAwMCkKICAuZGVsYXkoMC40KS5kZWxheXRpbWUoMC4zNzUpLmRlbGF5ZmVlZGJhY2soMC40NSkKICAucm9vbSgwLjYpLnNpemUoMC43KQogIC5wYW4oc2luZS5yYW5nZSgwLjMsIDAuNykuc2xvdyg0KSkKCmxldCBtb29ubGlnaHQgPSBub3RlKCI8W2M0LGViNCxnNCxiYjRdIFthYjMsYzQsZWI0LGc0XSBbYmIzLGQ0LGY0LGFiNF0gW2czLGJiMyxkNCxmNF0%2BIikKICAucygiZ21fZHJhd2Jhcl9vcmdhbiIpCiAgLmdhaW4oLjQpCiAgLmF0dGFjaygwLjgpLnJlbGVhc2UoMS41KQogIC5scGYoc2luZS5yYW5nZSg2MDAsMTQwMCkuc2xvdyg4KSkKICAucm9vbSgyKS5zaXplKDAuOSkKCmxldCBvZl9kdXN0ID0gcygiZ21fdHViYSIpCiAgLmdhaW4oc2xpZGVyKDAuNTc5NSwuNSwyKSkKICAuc3BlZWQoMC41KQogIC5yb29tKHNsaWRlcigxLDEsMykpCiAgLmxwZigyNTAwKQogIC5ocGYoNDAwKQoKbGV0IHNwYXJrcyA9IHMoIn4gY3M6NCB%2BIH4gY3M6NSB%2BIH4gY3M6NCIpCiAgLnNwZWVkKCI8MS41IDIgMC43NSAxLjI%2BIikKICAuZ2FpbigwLjUpCiAgLnBhbigiPDAuMiAwLjggMC41IDAuMz4iKSAvLyBzbG93IHBhbiBzd2VlcCBsZWZ0IHRvIHJpZ2h0IAogIC5kZWxheSgwLjMpLmRlbGF5dGltZSgwLjE4NzUpLmRlbGF5ZmVlZGJhY2soMC4zNSkKICAucm9vbSgwLjQpCgpsZXQgZ2hvc3RzID0gcygiY3M6OCB%2BIH4gfiBjczo5IH4gY3M6OCB%2BIikKICAuc3BlZWQoIjwxIDAuOCAxLjI%2BIikKICAuZ2FpbigwLjU1KQogIC5kZWxheSgwLjI1KS5kZWxheXRpbWUoMC4xMjUpLmRlbGF5ZmVlZGJhY2soMC4yNSkKICAucm9vbSgwLjMpCgpsZXQgcmlzaW5nID0gcygiY3M6NyIpLmdhaW4oMC40KQogIC5zcGVlZCgwLjUpCiAgLmxwZihzaW5lLnJhbmdlKDIwMCwgNDAwMCkuc2xvdyg4KSkKICAucm9vbSgwLjkpLnNpemUoMC45NSkKCmxldCB0aGVfc3VyZmFjZSA9IHMoImNzOjciKS5zbG93KDIpLmdhaW4oMC4yKQogIC5yb29tKDAuOCkuc2l6ZSgwLjkpCiAgLmxwZig5MDApCgoKbGV0IGF3YWtlbmluZyA9IHN0YWNrKHJhaW5fb24sIHRoZV9lYXJ0aCwgCiAgICAgICAgICAgICAgICAgICAgICAgdGhlX3N1cmZhY2UsIAogICAgICAgICAgICAgICAgICAgICAgICBtb29ubGlnaHQsIHJpc2luZykKbGV0IHNwaXJpdHVhbCA9IHN0YWNrKGhlYXJ0LCBhbmRfYnJlYXRoLCAKICAgICAgICAgICAgICAgICAgICAgIGRyaWZ0aW5nLCAKICAgICAgICAgICAgICAgICAgICAgICByYWluX29uLCByb290cywgCiAgICAgICAgICAgICAgICAgICAgICAgIHRoZV9lYXJ0aCwgb2ZfZHVzdCkKbGV0IGZsaWdodCA9IHN0YWNrKGhlYXJ0LCBkcmlmdGluZywgd2hpc3BlciwgCiAgICAgICAgICAgICAgICAgICAgcmFpbl9vbiwgYW5kX2JyZWF0aCwgcm9vdHMsIAogICAgICAgICAgICAgICAgICAgICAgdGhlX2VhcnRoLCBjb3NtaWNfb24sIHNwYXJrcywgb2ZfZHVzdCkKCgpsZXQgc3RpbGxuZXNzID0gc3RhY2sobW9vbmxpZ2h0LCBjb3NtaWNfb24sIHRoZV9zdXJmYWNlLCAKICAgICAgICAgICAgICAgICAgICAgIGdob3N0cywgb2ZfZHVzdCkKbGV0IGV2ZXJ5d2hlcmUgPSBzdGFjayhoZWFydCwgZHJpZnRpbmcsIHdoaXNwZXIsIAogICAgICAgICAgICAgICAgICAgICAgIHJhaW5fb24sIGFuZF9icmVhdGgsIAogICAgICAgICAgICAgICAgICAgICAgICBzcGFya3MsIHRoZV9lYXJ0aCwgCiAgICAgICAgICAgICAgICAgICAgICAgICByb290cywgZ2hvc3RzLCBvZl9kdXN0LCAKICAgICAgICAgICAgICAgICAgICAgICAgICBjb3NtaWNfb24sIAogICAgICAgICAgICAgICAgICAgICAgICAgICBtb29ubGlnaHQsKQoKCmxldCBkYXduID0gc3RhY2sodGhlX3N1cmZhY2UsIG9mX2R1c3QsIG1vb25saWdodCwpCmxldCBkdXNrID0gc3RhY2sodGhlX2VhcnRoLAogICAgICAgICAgICAgICAgIHRoZV9zdXJmYWNlLCBtb29ubGlnaHQpCgphcnJhbmdlKAogIFs0LCBhd2FrZW5pbmddLCAKICBbOCwgc3Bpcml0dWFsXSwgCiAgWzgsIGZsaWdodF0sIAogIAogIFs0LCBzdGlsbG5lc3NdLAogIFs4LCBldmVyeXdoZXJlXSwgCiAgCiAgWzQsIGRhd25dLCAKICBbNCwgZHVza10sCikK" target="_blank" rel="noopener">strudelpoetics.live</a></b>, teaching my own voice to write music in real time.
         </p>
